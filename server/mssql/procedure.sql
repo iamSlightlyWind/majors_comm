@@ -8,17 +8,17 @@ create or alter procedure login
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM users WHERE username = @login AND password = @password)
+    IF EXISTS (SELECT 1 FROM users WHERE username = @login AND password = @password and isGoogleUser = 0)
     BEGIN
         SET @result = 1
     END
-    ELSE IF EXISTS (SELECT 1 FROM users WHERE email = @login AND password = @password)
+    ELSE IF EXISTS (SELECT 1 FROM users WHERE email = @login AND password = @password and isGoogleUser = 0)
     BEGIN
         SET @result = 1
     END
     ELSE
     BEGIN
-        SET @result = 0
+        SET @result = -1
     END
 end
 go

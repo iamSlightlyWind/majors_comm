@@ -145,9 +145,9 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="../Style/style.css" />
+      <link rel="stylesheet" href="/Style/style.css" />
       <div>
-        <link href="./Register.css" rel="stylesheet" />
+        <link href="/Auth/Register.css" rel="stylesheet" />
 
         <div class="authentication-register-container">
           <navguest-wrapper>
@@ -181,7 +181,8 @@
                     </span>
                     <span>
                       <fragment class="authentication-register-fragment10">
-                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Privacy &amp; Safety</span>
+                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Privacy &amp;
+                          Safety</span>
                       </fragment>
                     </span>
                     <span>
@@ -283,7 +284,7 @@
             </div>
           </navguest-wrapper>
           <div class="authentication-register-container1">
-            <form class="authentication-register-form">
+            <form class="authentication-register-form" action="/auth" method="post">
               <div class="authentication-register-container2">
                 <span class="authentication-register-text13">
                   Become a part of&nbsp;
@@ -296,21 +297,28 @@
                 <div class="authentication-register-container3">
                   <div class="authentication-register-container4"><br /></div>
                 </div>
+                <input type="text" name="username" required="true" autofocus="true" placeholder="Username"
+                  class="authentication-register-textinput input" />
+                <div class="authentication-register-container3">
+                  <div class="authentication-register-container4"><br /></div>
+                </div>
                 <input type="text" name="password" required="true" placeholder="Password"
                   class="authentication-register-input1 input" />
                 <div class="authentication-register-container5">
                   <div class="authentication-register-container6"><br /></div>
                 </div>
-                <input type="text" disabled="confirm" required="true" placeholder="Confirm Password"
+                <input type="text" name="confirm" required="true" placeholder="Confirm Password"
                   class="authentication-register-input2 input" />
               </div>
-              <button name="action" type="submit" class="authentication-register-button button">
+              <p style="color: red; margin-bottom: 0.5vh; margin-left: 0.5vw;">${error}</p>
+              <button name="action" value="register" type="submit" class="authentication-register-button button">
                 <span class="authentication-register-text15">Register</span>
               </button>
               <button type="button" class="authentication-register-button1 button">
                 <span>&nbsp;</span>
               </button>
-              <button type="submit" class="authentication-register-button2 button">
+              <button type="button" class="authentication-register-button2 button"
+                onclick="window.location.href='google.com'">
                 <span class="authentication-register-text17">
                   <span>Continue with&nbsp;</span>
                   <br />
@@ -321,12 +329,12 @@
                   </path>
                 </svg>
               </button>
-              <button type="submit" class="authentication-register-button3 button">
+              <a class="authentication-register-button3 button" href="/Auth/Login.jsp">
                 <span class="authentication-register-text20">
                   <span>Already have an account?</span>
                   <br />
                 </span>
-              </button>
+              </a>
             </form>
             <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
               class="authentication-register-image" />

@@ -1,13 +1,13 @@
 package Main;
 
 public class User {
-    int id;
-    String username;
-    String password;
-    String email;
-    String dob;
-    int gender;
-    int googleUser;
+    public int id;
+    public String username;
+    public String password;
+    public String email;
+    public String dob;
+    public int gender;
+    public int googleUser;
 
     public User(String login, String password) {
         if (isEmail(login)) {
@@ -15,6 +15,12 @@ public class User {
         } else {
             this.username = login;
         }
+        this.password = password;
+    }
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
         this.password = password;
     }
 

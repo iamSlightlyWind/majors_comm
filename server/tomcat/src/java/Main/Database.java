@@ -36,4 +36,36 @@ public class Database {
         }
         return false;
     }
+
+    public static int userExist(User current) {
+        try {
+            var statement = connection.prepareCall("{call checkExist(?, ?, ?)}");
+            statement.setString(1, current.username);
+            statement.setString(2, current.email);
+            statement.registerOutParameter(3, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(3);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+
+    public static boolean addUser(User current) {
+        try {
+            var statement = connection.prepareCall("{call addUser(?, ?, ?, ?, ?, ?)}");
+            statement.setString(1, current.username);
+            statement.setString(2, current.password);
+            statement.setString(3, current.email);
+            statement.setString(4, current.dob);
+            statement.setInt(5, current.gender);
+            statement.registerOutParameter(6, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(6) == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

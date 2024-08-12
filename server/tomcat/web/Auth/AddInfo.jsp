@@ -145,9 +145,9 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="../Style/style.css" />
+      <link rel="stylesheet" href="/Style/style.css" />
       <div>
-        <link href="./AddInfo.css" rel="stylesheet" />
+        <link href="/Auth/AddInfo.css" rel="stylesheet" />
 
         <div class="authentication-add-info-container">
           <navguest-wrapper>
@@ -181,7 +181,8 @@
                     </span>
                     <span>
                       <fragment class="authentication-add-info-fragment10">
-                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Privacy &amp; Safety</span>
+                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Privacy &amp;
+                          Safety</span>
                       </fragment>
                     </span>
                     <span>
@@ -294,8 +295,10 @@
                 You are creating an account using this email:
               </span>
               <div class="authentication-add-info-input">
-                <input type="text" disabled="true" placeholder="Email address"
-                  class="authentication-add-info-textinput input" />
+                <input type="text" disabled="true" class="authentication-add-info-textinput input"
+                  style="margin-bottom: 1vh;" value="${email}" />
+                <input type="text" disabled="true" class="authentication-add-info-textinput input"
+                  value="${username}" />
                 <div class="authentication-add-info-container03">
                   <div class="authentication-add-info-container04"><br /></div>
                 </div>
@@ -324,22 +327,17 @@
                 <div class="authentication-add-info-container08">
                   <div class="authentication-add-info-container09"><br /></div>
                 </div>
-                <input type="text" name="username" required="true" placeholder="Username"
-                  class="authentication-add-info-input2 input" />
-                <div class="authentication-add-info-container10">
-                  <div class="authentication-add-info-container11"><br /></div>
-                </div>
                 <input type="date" name="dob" required="true" placeholder="Date of Birth"
                   class="authentication-add-info-input3 input" />
                 <div class="authentication-add-info-container12">
                   <div class="authentication-add-info-container13"><br /></div>
                 </div>
-                <select required="true" class="authentication-add-info-select">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
+                <select required="true" class="authentication-add-info-select" name="gender">
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
                 </select>
               </div>
-              <button type="submit" class="authentication-add-info-button1 button">
+              <button type="submit" class="authentication-add-info-button1 button" name="action" value="addInfo">
                 <span class="authentication-add-info-text23">
                   Complete Registeration
                 </span>

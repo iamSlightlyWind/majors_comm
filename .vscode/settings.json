@@ -1,3 +1,9 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.project.referencedLibraries": [
+        "../Libraries/*.jar",
+        "/usr/share/tomcat10/lib/*.jar"
+    ],
+    "files.exclude": {
+        "server/tomcat/build/": true
+    }
 }

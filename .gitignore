@@ -38,3 +38,4 @@ server/tomcat/nb-configuration.xml
 # Package Files #
 *.ear
 /server/tomcat/majors_comm/target/
+/server/tomcat/dist/

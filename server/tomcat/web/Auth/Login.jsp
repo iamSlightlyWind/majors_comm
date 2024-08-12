@@ -155,12 +155,12 @@
               <header data-thq="thq-navbar" class="navguest-navbar-interactive">
                 <div class="navguest-container1">
                   <span>
-                    <fragment class="authentication-login-fragment08">
+                    <fragment class="authentication-login-fragment08" style="font-family: Satisfy">
                       <span>Major's</span>
                     </fragment>
                   </span>
                   <span>
-                    <fragment class="authentication-login-fragment11">
+                    <fragment class="authentication-login-fragment11" style="font-family: Satisfy">
                       <span>Comm</span>
                     </fragment>
                   </span>
@@ -179,12 +179,12 @@
                     </span>
                     <span>
                       <fragment class="authentication-login-fragment10">
-                        <span>Privacy &amp; Safety</span>
+                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Privacy &amp; Safety</span>
                       </fragment>
                     </span>
                     <span>
                       <fragment class="authentication-login-fragment09">
-                        <span>Friends</span>
+                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Friends</span>
                       </fragment>
                     </span>
                   </nav>
@@ -275,7 +275,7 @@
             </div>
           </navguest-wrapper>
           <div class="authentication-login-container1">
-            <form class="authentication-login-form">
+            <form class="authentication-login-form" action="/auth" method="post">
               <div class="authentication-login-container2">
                 <span class="authentication-login-text13">
                   Become a part of&nbsp;
@@ -288,27 +288,27 @@
                 <div class="authentication-login-container3">
                   <div class="authentication-login-container4"><br /></div>
                 </div>
-                <input type="text" required="true" placeholder="Password" class="authentication-login-input1 input" />
+                <input type="text" name="password" required="true" placeholder="Password" class="authentication-login-input1 input" />
               </div>
-              <button name="action" type="submit" class="authentication-login-button button">
+              <button name="action" value="login" type="submit" class="authentication-login-button button">
                 <span class="authentication-login-text15">
                   <span>Log In</span>
                   <br />
                 </span>
               </button>
-              <button type="submit" class="authentication-login-button1 button">
+              <a class="authentication-login-button1 button" href="forgot">
                 <span class="authentication-login-text18">
                   <span>Forgot password?</span>
                   <br />
                 </span>
-              </button>
+              </a>
               <button type="button" class="authentication-login-button2 button">
                 <span>&nbsp;</span>
               </button>
-              <button type="submit" class="authentication-login-button3 button">
+              <button class="authentication-login-button3 button" href="google.com">
                 <span class="authentication-login-text22">
                   <span>Continue with&nbsp;</span>
-                  <br />
+                  <br>
                 </span>
                 <svg viewBox="0 0 860.0137142857142 1024" class="authentication-login-icon">
                   <path
@@ -316,7 +316,7 @@
                   </path>
                 </svg>
               </button>
-              <button type="submit" class="authentication-login-button4 button">
+              <button class="authentication-login-button4 button">
                 <span class="authentication-login-text25">
                   <span>Don't have an account?</span>
                   <br />

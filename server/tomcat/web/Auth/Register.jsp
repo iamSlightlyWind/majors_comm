@@ -155,12 +155,12 @@
               <header data-thq="thq-navbar" class="navguest-navbar-interactive">
                 <div class="navguest-container1">
                   <span>
-                    <fragment class="authentication-register-fragment08">
+                    <fragment class="authentication-register-fragment08" style="font-family: Satisfy">
                       <span>Major's</span>
                     </fragment>
                   </span>
                   <span>
-                    <fragment class="authentication-register-fragment11">
+                    <fragment class="authentication-register-fragment11" style="font-family: Satisfy">
                       <span>Comm</span>
                     </fragment>
                   </span>
@@ -181,12 +181,12 @@
                     </span>
                     <span>
                       <fragment class="authentication-register-fragment10">
-                        <span>Privacy &amp; Safety</span>
+                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Privacy &amp; Safety</span>
                       </fragment>
                     </span>
                     <span>
                       <fragment class="authentication-register-fragment09">
-                        <span>Friends</span>
+                        <span style="margin-left: var(--dl-space-space-twounits); font-family: Nunito;">Friends</span>
                       </fragment>
                     </span>
                   </nav>

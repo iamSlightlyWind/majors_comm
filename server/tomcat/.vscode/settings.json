@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "../Libraries/*.jar",
+        "/usr/share/tomcat10/lib/*.jar"
+    ]
+}

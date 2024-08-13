@@ -26,11 +26,29 @@ public class Handler extends HttpServlet {
             case "addInfo":
                 addInfo(request, response);
                 break;
+            case "recovery":
+                recovery(request, response);
+                break;
             default:
                 request.getSession().invalidate();
                 redirectDefault(request, response);
                 break;
         }
+    }
+
+    public void recovery(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String username = request.getParameter("username");
+
+        User current = new User(username, email);
+        if (Database.userExist(current) != 1) {
+            sendError(request, response, "Invalid email or username", "/Auth/Recovery.jsp");
+            return;
+        }
+
+        request.getSession().setAttribute("recoveryUser", current);
+        request.getRequestDispatcher("Auth/Recovery.jsp").forward(request, response);
     }
 
     protected void addInfo(HttpServletRequest request, HttpServletResponse response)
@@ -69,7 +87,6 @@ public class Handler extends HttpServlet {
         User current = new User(username, email, password);
         int exists = Database.userExist(current);
         String error = "";
-        System.out.println(">>> Error: " + exists);
         if (exists != 1) {
             if (exists == -1) {
                 error = "Username already in use";

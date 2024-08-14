@@ -59,7 +59,7 @@ public class Handler extends HttpServlet {
 
         User current = (User) request.getSession().getAttribute("registeringUser");
         current.dob = dob;
-        current.username = fullname;
+        current.fullname = fullname;
         current.gender = gender;
 
         if (Database.userExist(current) != 1) {

@@ -164,9 +164,12 @@ create or alter procedure getUser
     @isGoogleUser int output
 as
 begin
-    declare @result int
-    begin
-        select @username = username, @dateOfBirth = dateOfBirth, @gender = gender from users where id = @id
-    end
+    SELECT @username = username,
+           @email = email,
+           @dateOfBirth = dateOfBirth,
+           @gender = gender,
+           @isGoogleUser = isGoogleUser
+    FROM users
+    WHERE id = @id
 end
 go

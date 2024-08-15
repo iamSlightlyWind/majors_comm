@@ -158,18 +158,60 @@ go
 create or alter procedure getUser
     @id int,
     @username nvarchar(15) output,
+    @fullname nvarchar(100) output,
     @email nvarchar(100) output,
     @dateOfBirth date output,
-    @gender int output,
-    @isGoogleUser int output
+    @gender int output
 as
 begin
     SELECT @username = username,
+            @fullname = fullname,
            @email = email,
            @dateOfBirth = dateOfBirth,
-           @gender = gender,
-           @isGoogleUser = isGoogleUser
+           @gender = gender
     FROM users
     WHERE id = @id
+end
+go
+
+create or alter procedure getFriendList
+    @id int
+as
+begin
+    select friendId as Friend
+    from friends
+    where userId = @id
+
+    union
+
+    select userId as Friend
+    from friends
+    where friendId = @id
+end
+go
+
+create or alter procedure getUserList
+    @id int
+as
+begin
+    select id
+    from users
+    where id != @id
+    and
+    id not in (select friendId from friends where userId = @id)
+    and
+    id not in (select userId from friends where friendId = @id)
+    and
+    id not in (select blockedId from blocks where blockerId = @id)
+end
+go
+
+create or alter procedure getBlockList
+    @id int
+as
+begin
+    select blockedId as Blocked
+    from blocks
+    where blockerId = @id
 end
 go

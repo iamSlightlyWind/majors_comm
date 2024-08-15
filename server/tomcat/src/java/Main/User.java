@@ -25,6 +25,15 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, String username, String fullname, String email, String dob, int gender, int googleUser) {
+        this.id = id;
+        this.username = username;
+        this.fullname = fullname;
+        this.email = email;
+        this.dob = dob;
+        this.gender = gender;
+    }
+
     public boolean isEmail(String login) {
         return login.contains("@");
     }

@@ -12,7 +12,7 @@
                 <p>${friend}</p>
             </c:forEach>
             <p>Users</p>
-            <c:forEach var="user" items="${users}">
+            <c:forEach var="user" items="${notFriends}">
                 <p>${user}</p>
             </c:forEach>
         </body>

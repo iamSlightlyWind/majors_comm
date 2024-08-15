@@ -302,12 +302,12 @@
                 <div class="authentication-register-container3">
                   <div class="authentication-register-container4"><br /></div>
                 </div>
-                <input type="text" name="password" required="true" placeholder="Password"
+                <input type="password" name="password" required="true" placeholder="Password"
                   class="authentication-register-input1 input" />
                 <div class="authentication-register-container5">
                   <div class="authentication-register-container6"><br /></div>
                 </div>
-                <input type="text" name="confirm" required="true" placeholder="Confirm Password"
+                <input type="password" name="confirm" required="true" placeholder="Confirm Password"
                   class="authentication-register-input2 input" />
               </div>
               <p style="color: red; margin-bottom: 0.5vh; margin-left: 0.5vw;">${error}</p>

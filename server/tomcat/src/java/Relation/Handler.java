@@ -30,18 +30,31 @@ public class Handler extends HttpServlet {
                 break;
             default:
                 viewAll(request, response);
+                System.out.println("default");
                 break;
         }
     }
 
     protected void viewAll(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            User current = (User) request.getSession().getAttribute("user");
-            ArrayList<User> friends = Database.getFriendList(current);
-            ArrayList<User> users = Database.getUserList(current);
-            ArrayList<User> blocks = Database.getBlockList(current);
+        User current = (User) request.getSession().getAttribute("user");
+        ArrayList<User> friends = Database.getFriendList(current);
+        ArrayList<User> users = Database.getUserList(current);
+        ArrayList<User> blocks = Database.getBlockList(current);
 
-            
+        ArrayList<User> notFriends = new ArrayList<User>();
+        for (User user : users) {
+            notFriends.add(user);
+        }
+        for (User user : blocks) {
+            notFriends.add(user);
+        }
+
+        System.out.println(notFriends);
+
+        request.setAttribute("friends", friends);
+        request.setAttribute("notFriends", notFriends);
+        request.getRequestDispatcher("friends.jsp").forward(request, response);
     }
 
     @Override

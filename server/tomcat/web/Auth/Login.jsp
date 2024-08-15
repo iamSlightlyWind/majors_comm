@@ -289,7 +289,7 @@
                 <div class="authentication-login-container3">
                   <div class="authentication-login-container4"><br /></div>
                 </div>
-                <input type="text" name="password" required="true" placeholder="Password"
+                <input type="password" name="password" required="true" placeholder="Password"
                   class="authentication-login-input1 input" />
               </div>
               <p style="color: red; margin-bottom: 0.5vh; margin-left: 0.5vw;">${error}</p>

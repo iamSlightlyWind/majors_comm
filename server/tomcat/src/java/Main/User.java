@@ -9,7 +9,11 @@ public class User {
     public String dob;
     public int gender;
     public int googleUser;
-    public int relation;
+    public int relation = 0;
+
+    public String toString() {
+        return id + " " + username + " " + fullname + " " + email + " " + dob + gender + relation;
+    }
 
     public User(String login, String password) {
         if (isEmail(login)) {

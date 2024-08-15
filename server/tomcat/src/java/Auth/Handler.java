@@ -122,6 +122,7 @@ public class Handler extends HttpServlet {
         }
 
         request.getSession().setAttribute("user", current);
+        response.sendRedirect("/relation");
     }
 
     protected void redirectDefault(HttpServletRequest request, HttpServletResponse response)

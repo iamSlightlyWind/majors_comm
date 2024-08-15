@@ -116,9 +116,11 @@ public class Handler extends HttpServlet {
         String password = request.getParameter("password");
 
         User current = new User(login, password);
-        if (!current.login()) {
+        if (current.login() == -1) {
             sendError(request, response, "Invalid login or password", "/Auth/Login.jsp");
             return;
+        } else {
+            current = Database.getUser(current.login());
         }
 
         request.getSession().setAttribute("user", current);

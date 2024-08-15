@@ -8,17 +8,29 @@ create or alter procedure login
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM users WHERE username = @login AND password = @password and isGoogleUser = 0)
+    declare @userId int
+    SELECT @userId = id
+    FROM users
+    WHERE username = @login AND password = @password and isGoogleUser = 0
+
+    IF @userId IS NOT NULL
     BEGIN
-        SET @result = 1
-    END
-    ELSE IF EXISTS (SELECT 1 FROM users WHERE email = @login AND password = @password and isGoogleUser = 0)
-    BEGIN
-        SET @result = 1
+        SET @result = @userId
     END
     ELSE
     BEGIN
-        SET @result = -1
+        SELECT @userId = id
+        FROM users
+        WHERE email = @login AND password = @password and isGoogleUser = 0
+
+        IF @userId IS NOT NULL
+        BEGIN
+            SET @result = @userId
+        END
+        ELSE
+        BEGIN
+            SET @result = -1
+        END
     END
 end
 go
@@ -29,11 +41,15 @@ create or alter procedure checkExist
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM users WHERE username = @username)
+    IF EXISTS (SELECT 1
+    FROM users
+    WHERE username = @username)
     BEGIN
         SET @result = -1
     END
-    ELSE IF EXISTS (SELECT 1 FROM users WHERE email = @email)
+    ELSE IF EXISTS (SELECT 1
+    FROM users
+    WHERE email = @email)
     BEGIN
         SET @result = -2
     END
@@ -55,7 +71,10 @@ as
 begin
     declare @isGoogleUser int = 0
     begin
-        insert into users (username, password, email, dateOfBirth, gender, isGoogleUser) values (@username, @password, @email, @dateOfBirth, @gender, @isGoogleUser)
+        insert into users
+            (username, password, email, dateOfBirth, gender, isGoogleUser)
+        values
+            (@username, @password, @email, @dateOfBirth, @gender, @isGoogleUser)
         set @result = 1
     end
 end
@@ -67,7 +86,10 @@ create or alter procedure setFriend
 as
 begin
     begin
-        insert into friends (userId, friendId) values (@user1, @user2)
+        insert into friends
+            (userId, friendId)
+        values
+            (@user1, @user2)
     end
 end
 go
@@ -78,27 +100,45 @@ create or alter procedure sendFriendRequest
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM blocks WHERE blockerId = @requested AND blockedId = @requester)
+    IF EXISTS (SELECT 1
+    FROM blocks
+    WHERE blockerId = @requested AND blockedId = @requester)
     BEGIN
-        SET @result = -2 -- blocked
+        SET @result = -2
+    -- blocked
     END
-    ELSE IF EXISTS (SELECT 1 FROM friends WHERE userId = @requested AND friendId = @requester) OR EXISTS (SELECT 1 FROM friends WHERE userId = @requester AND friendId = @requested)
+    ELSE IF EXISTS (SELECT 1
+        FROM friends
+        WHERE userId = @requested AND friendId = @requester) OR EXISTS (SELECT 1
+        FROM friends
+        WHERE userId = @requester AND friendId = @requested)
     BEGIN
-        SET @result = -1 -- already friends
+        SET @result = -1
+    -- already friends
     END
-    ELSE IF EXISTS (SELECT 1 FROM requests WHERE requesterId = @requester AND requestedId = @requested)
+    ELSE IF EXISTS (SELECT 1
+    FROM requests
+    WHERE requesterId = @requester AND requestedId = @requested)
     BEGIN
-        SET @result = 0 -- already requested
+        SET @result = 0
+    -- already requested
     END
-    ELSE IF EXISTS (SELECT 1 FROM requests WHERE requesterId = @requested AND requestedId = @requester)
+    ELSE IF EXISTS (SELECT 1
+    FROM requests
+    WHERE requesterId = @requested AND requestedId = @requester)
     BEGIN
         exec setFriend @requester, @requested
-        SET @result = 2 -- accepted
+        SET @result = 2
+    -- accepted
     END
     ELSE 
     BEGIN
-        insert into requests (requesterId, requestedId) values (@requester, @requested)
-        SET @result = 1 -- requested
+        insert into requests
+            (requesterId, requestedId)
+        values
+            (@requester, @requested)
+        SET @result = 1
+    -- requested
     END
 end
 go
@@ -112,27 +152,38 @@ begin
     delete from friends where userId = @user2 and friendId = @user1
 end
 go
-        
+
 create or alter procedure blockUser
     @blocker int,
     @blocked int,
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM blocks WHERE blockerId = @blocker AND blockedId = @blocked)
+    IF EXISTS (SELECT 1
+    FROM blocks
+    WHERE blockerId = @blocker AND blockedId = @blocked)
     BEGIN
         SET @result = -1
     END
-    ELSE IF EXISTS (SELECT 1 FROM friends WHERE userId = @blocker AND friendId = @blocked) OR EXISTS (SELECT 1 FROM friends WHERE userId = @blocked AND friendId = @blocker)
+    ELSE IF EXISTS (SELECT 1
+        FROM friends
+        WHERE userId = @blocker AND friendId = @blocked) OR EXISTS (SELECT 1
+        FROM friends
+        WHERE userId = @blocked AND friendId = @blocker)
     BEGIN
         exec removeFriend @blocker, @blocked
         exec removeFriend @blocked, @blocker
-        set @result = 2 -- removed friend and blocked
+        set @result = 2
     END
     ELSE
     BEGIN
-        insert into blocks (blockerId, blockedId) values (@blocker, @blocked)
-        SET @result = 1 -- blocked
+        insert into blocks
+            (blockerId, blockedId)
+        values
+            (@blocker, @blocked)
+        delete from requests where requesterId = @blocker and requestedId = @blocked
+        delete from requests where requesterId = @blocked and requestedId = @blocker
+        SET @result = 1
     END
 end
 go
@@ -143,7 +194,9 @@ create or alter procedure unblockUser
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM blocks WHERE blockerId = @blocker AND blockedId = @blocked)
+    IF EXISTS (SELECT 1
+    FROM blocks
+    WHERE blockerId = @blocker AND blockedId = @blocked)
     BEGIN
         delete from blocks where blockerId = @blocker and blockedId = @blocked
         SET @result = 1
@@ -165,10 +218,10 @@ create or alter procedure getUser
 as
 begin
     SELECT @username = username,
-            @fullname = fullname,
-           @email = email,
-           @dateOfBirth = dateOfBirth,
-           @gender = gender
+        @fullname = fullname,
+        @email = email,
+        @dateOfBirth = dateOfBirth,
+        @gender = gender
     FROM users
     WHERE id = @id
 end
@@ -178,15 +231,15 @@ create or alter procedure getFriendList
     @id int
 as
 begin
-    select friendId as Friend
-    from friends
-    where userId = @id
+            select friendId as Friend
+        from friends
+        where userId = @id
 
     union
 
-    select userId as Friend
-    from friends
-    where friendId = @id
+        select userId as Friend
+        from friends
+        where friendId = @id
 end
 go
 
@@ -197,12 +250,18 @@ begin
     select id
     from users
     where id != @id
-    and
-    id not in (select friendId from friends where userId = @id)
-    and
-    id not in (select userId from friends where friendId = @id)
-    and
-    id not in (select blockedId from blocks where blockerId = @id)
+        and
+        id not in (select friendId
+        from friends
+        where userId = @id)
+        and
+        id not in (select userId
+        from friends
+        where friendId = @id)
+        and
+        id not in (select blockedId
+        from blocks
+        where blockerId = @id)
 end
 go
 
@@ -222,25 +281,40 @@ create or alter procedure getRelation
     @result int output
 as
 begin
-    IF EXISTS (SELECT 1 FROM friends WHERE userId = @user1 AND friendId = @user2) OR EXISTS (SELECT 1 FROM friends WHERE userId = @user2 AND friendId = @user1)
+    IF EXISTS (SELECT 1
+        FROM friends
+        WHERE userId = @user1 AND friendId = @user2) OR EXISTS (SELECT 1
+        FROM friends
+        WHERE userId = @user2 AND friendId = @user1)
     BEGIN
-        SET @result = 1 -- friends
+        SET @result = 1
+    -- friends
     END
-    ELSE IF EXISTS (SELECT 1 FROM requests WHERE requesterId = @user1 AND requestedId = @user2)
+    ELSE IF EXISTS (SELECT 1
+    FROM requests
+    WHERE requesterId = @user1 AND requestedId = @user2)
     BEGIN
-        SET @result = 2 -- requested
+        SET @result = 2
+    -- requested
     END
-    ELSE IF EXISTS (SELECT 1 FROM requests WHERE requesterId = @user2 AND requestedId = @user1)
+    ELSE IF EXISTS (SELECT 1
+    FROM requests
+    WHERE requesterId = @user2 AND requestedId = @user1)
     BEGIN
-        SET @result = 3 -- received
+        SET @result = 3
+    -- received
     END
-    ELSE IF EXISTS (SELECT 1 FROM blocks WHERE blockerId = @user1 AND blockedId = @user2)
+    ELSE IF EXISTS (SELECT 1
+    FROM blocks
+    WHERE blockerId = @user1 AND blockedId = @user2)
     BEGIN
-        SET @result = -1 -- blocked
+        SET @result = -1
+    -- blocked
     END
     ELSE
     BEGIN
-        SET @result = 0 -- no relation
+        SET @result = 0
+    -- no relation
     END
 end
 go

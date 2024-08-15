@@ -24,18 +24,18 @@ public class Database {
         }
     }
 
-    public static boolean login(String login, String password) {
+    public static int login(String login, String password) {
         try {
             var statement = connection.prepareCall("{call login(?, ?, ?)}");
             statement.setString(1, login);
             statement.setString(2, password);
             statement.registerOutParameter(3, java.sql.Types.INTEGER);
             statement.execute();
-            return statement.getInt(3) == 1;
+            return statement.getInt(3);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return -1;
     }
 
     public static int userExist(User current) {
@@ -148,8 +148,10 @@ public class Database {
             statement.registerOutParameter(5, java.sql.Types.DATE);
             statement.registerOutParameter(6, java.sql.Types.INTEGER);
             statement.execute();
+
             return new User(id, statement.getString(2), statement.getString(3), statement.getString(4),
                     statement.getString(5), statement.getInt(6), 0);
+            ;
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -167,7 +169,9 @@ public class Database {
             while (result.next()) {
                 friends.add(getUser(result.getInt(1)));
             }
+
             return friends;
+
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -211,5 +215,19 @@ public class Database {
         }
 
         return null;
+    }
+
+    public static int getRelation(int user1, int user2) {
+        try {
+            var statement = connection.prepareCall("{call getRelation(?, ?, ?)}");
+            statement.setInt(1, user1);
+            statement.setInt(2, user2);
+            statement.registerOutParameter(3, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(3);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }

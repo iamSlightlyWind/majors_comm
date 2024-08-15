@@ -1,6 +1,6 @@
 {
     "java.project.referencedLibraries": [
-        "../Libraries/*.jar",
+        "server/tomcat/libraries/*.jar",
         "/usr/share/tomcat10/lib/*.jar"
     ],
     "files.exclude": {

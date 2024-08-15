@@ -11,6 +11,9 @@ public class User {
     public int googleUser;
     public int relation = 0;
 
+    public User() {
+    }
+
     public String toString() {
         return id + " " + username + " " + fullname + " " + email + " " + dob + gender + relation;
     }
@@ -43,11 +46,15 @@ public class User {
         return login.contains("@");
     }
 
-    public boolean login() {
+    public int login() {
         if (this.email != null) {
             return Database.login(this.email, this.password);
         } else {
             return Database.login(this.username, this.password);
         }
+    }
+
+    public String getId() {
+        return Integer.toString(this.id);
     }
 }

@@ -11,13 +11,6 @@ values
     ('asmith', 'Alice Smith', 'alicepwd', 'asmith@example.com', '1985-05-15', '0'),
     ('bwhite', 'Bob White', 'bobspass', 'bwhite@example.com', '1992-07-20', '1'),
     ('cjones', 'Carol Jones', 'carolpass', 'cjones@example.com', '1988-03-30', '0'),
-    ('dgreen', 'David Green', 'davidpass', 'dgreen@example.com', '1995-11-25', '1');
-
-exec setFriend '1', '2';
-exec setFriend '3', '1';
-exec blockUser '1', '4', @result output;
-exec blockUser '5', '1', @result output;
-
-exec getFriendList '1';
-exec getUserList '1';
-exec sendFriendRequest '1', '5', @result output;
+    ('dgreen', 'David Green', 'davidpass', 'dgreen@example.com', '1995-11-25', '1'),
+    ('esmith', 'Eve Smith', 'evepass', 'evepass@example.com', '1998-09-10', '0'),
+    ('fblack', 'Frank Black', 'frankpass', 'frankpass@example.com', '1993-12-05', '1');

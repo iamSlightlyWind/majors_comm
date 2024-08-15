@@ -215,3 +215,32 @@ begin
     where blockerId = @id
 end
 go
+
+create or alter procedure getRelation
+    @user1 int,
+    @user2 int,
+    @result int output
+as
+begin
+    IF EXISTS (SELECT 1 FROM friends WHERE userId = @user1 AND friendId = @user2) OR EXISTS (SELECT 1 FROM friends WHERE userId = @user2 AND friendId = @user1)
+    BEGIN
+        SET @result = 1 -- friends
+    END
+    ELSE IF EXISTS (SELECT 1 FROM requests WHERE requesterId = @user1 AND requestedId = @user2)
+    BEGIN
+        SET @result = 2 -- requested
+    END
+    ELSE IF EXISTS (SELECT 1 FROM requests WHERE requesterId = @user2 AND requestedId = @user1)
+    BEGIN
+        SET @result = 3 -- received
+    END
+    ELSE IF EXISTS (SELECT 1 FROM blocks WHERE blockerId = @user1 AND blockedId = @user2)
+    BEGIN
+        SET @result = -1 -- blocked
+    END
+    ELSE
+    BEGIN
+        SET @result = 0 -- no relation
+    END
+end
+go

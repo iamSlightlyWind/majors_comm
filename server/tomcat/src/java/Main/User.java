@@ -9,6 +9,7 @@ public class User {
     public String dob;
     public int gender;
     public int googleUser;
+    public int relation;
 
     public User(String login, String password) {
         if (isEmail(login)) {

@@ -138,6 +138,25 @@ public class Database {
         return 0;
     }
 
+    public static boolean removeFriendRequest(int requester, int requested) {
+        try {
+            var statement = connection.prepareCall("{call removeRequest(?, ?)}");
+            statement.setInt(1, requester);
+            statement.setInt(2, requested);
+            statement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public static User getUser(int id, int relation) {
+        User user = getUser(id);
+        user.relation = relation;
+        return user;
+    }
+
     public static User getUser(int id) {
         try {
             var statement = connection.prepareCall("{call getUser(?, ?, ?, ?, ?, ?)}");
@@ -151,31 +170,9 @@ public class Database {
 
             return new User(id, statement.getString(2), statement.getString(3), statement.getString(4),
                     statement.getString(5), statement.getInt(6), 0);
-            ;
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
-    }
-
-    public static ArrayList<User> getFriendList(User current) {
-        int userID = current.id;
-
-        try {
-            var statement = connection.prepareCall("{call getFriendList(?)}");
-            statement.setInt(1, userID);
-            var result = statement.executeQuery();
-            ArrayList<User> friends = new ArrayList<>();
-            while (result.next()) {
-                friends.add(getUser(result.getInt(1)));
-            }
-
-            return friends;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         return null;
     }
 
@@ -198,6 +195,65 @@ public class Database {
         return null;
     }
 
+    public static ArrayList<User> getFriendList(User current) {
+        int userID = current.id;
+
+        try {
+            var statement = connection.prepareCall("{call getFriendList(?)}");
+            statement.setInt(1, userID);
+            var result = statement.executeQuery();
+            ArrayList<User> friends = new ArrayList<>();
+            while (result.next()) {
+                friends.add(getUser(result.getInt(1), 1));
+            }
+
+            return friends;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    public static ArrayList<User> getSentRequestList(User current) {
+        int userID = current.id;
+
+        try {
+            var statement = connection.prepareCall("{call getSentRequestList(?)}");
+            statement.setInt(1, userID);
+            var result = statement.executeQuery();
+            ArrayList<User> requests = new ArrayList<>();
+            while (result.next()) {
+                requests.add(getUser(result.getInt(1), 2));
+            }
+            return requests;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    public static ArrayList<User> getReceivedRequestList(User current) {
+        int userID = current.id;
+
+        try {
+            var statement = connection.prepareCall("{call getReceivedRequestList(?)}");
+            statement.setInt(1, userID);
+            var result = statement.executeQuery();
+            ArrayList<User> requests = new ArrayList<>();
+            while (result.next()) {
+                requests.add(getUser(result.getInt(1), 3));
+            }
+            return requests;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
     public static ArrayList<User> getBlockList(User current) {
         int userID = current.id;
 
@@ -207,7 +263,7 @@ public class Database {
             var result = statement.executeQuery();
             ArrayList<User> blocks = new ArrayList<>();
             while (result.next()) {
-                blocks.add(getUser(result.getInt(1)));
+                blocks.add(getUser(result.getInt(1), -1));
             }
             return blocks;
         } catch (SQLException ex) {

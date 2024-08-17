@@ -22,19 +22,72 @@ public class Handler extends HttpServlet {
         switch (action) {
             case "add":
                 add(request, response);
+                viewAll(request, response);
                 break;
             case "block":
+                block(request, response);
+                viewAll(request, response);
                 break;
             case "remove":
+                remove(request, response);
+                viewAll(request, response);
                 break;
             case "unblock":
+                unblock(request, response);
+                viewAll(request, response);
                 break;
             case "removeRequest":
+                removeRequest(request, response);
+                viewAll(request, response);
                 break;
             default:
                 viewAll(request, response);
                 break;
         }
+    }
+
+    public static void removeRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        int currentID = current.id;
+        User them = Database.getUser(theirID);
+        Database.removeFriendRequest(currentID, theirID);
+
+        request.setAttribute("status", "Friend request removed from " + them.fullname);
+    }
+
+    public static void unblock(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        int currentID = current.id;
+        User them = Database.getUser(theirID);
+        Database.unblockUser(currentID, theirID);
+
+        request.setAttribute("status", "You have unblocked " + them.fullname);
+    }
+
+    public static void remove(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        int currentID = current.id;
+        User them = Database.getUser(theirID);
+        Database.removeFriend(currentID, theirID);
+
+        request.setAttribute("status", "You are no longer friends with " + them.fullname);
+    }
+
+    public static void block(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        int currentID = current.id;
+        User them = Database.getUser(theirID);
+        Database.blockUser(currentID, theirID);
+
+        request.setAttribute("status", "You have blocked " + them.fullname);
     }
 
     public void add(HttpServletRequest request, HttpServletResponse response)
@@ -62,34 +115,23 @@ public class Handler extends HttpServlet {
         }
 
         request.setAttribute("status", status);
-        viewAll(request, response);
     }
 
     protected void viewAll(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User current = (User) request.getSession().getAttribute("user");
 
-        ArrayList<User> friends = Database.getFriendList(current);
+        ArrayList<User> friend = Database.getFriendList(current);
+        ArrayList<User> requested = Database.getSentRequestList(current);
+        ArrayList<User> received = Database.getReceivedRequestList(current);
+        ArrayList<User> blocked = Database.getBlockList(current);
+        ArrayList<User> users = Database.getUserList(current);
 
-        ArrayList<User> notFriends = new ArrayList<User>();
-        for (User user : Database.getUserList(current)) {
-            notFriends.add(user);
-        }
-        for (User user : Database.getBlockList(current)) {
-            notFriends.add(user);
-        }
-
-        ArrayList<User> requested = new ArrayList<User>();
-        for (User user : notFriends) {
-            if (user.relation == 2) {
-                notFriends.remove(user);
-                requested.add(user);
-            }
-        }
-
+        request.setAttribute("friends", friend);
         request.setAttribute("requested", requested);
-        request.setAttribute("friends", friends);
-        request.setAttribute("notFriends", notFriends);
+        request.setAttribute("received", received);
+        request.setAttribute("blocked", blocked);
+        request.setAttribute("users", users);
         request.getRequestDispatcher("friends.jsp").forward(request, response);
     }
 

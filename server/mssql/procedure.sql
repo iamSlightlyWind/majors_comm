@@ -86,11 +86,21 @@ create or alter procedure setFriend
 as
 begin
     begin
-        insert into friends
-            (userId, friendId)
-        values
-            (@user1, @user2)
+        insert into friends (userId, friendId)
+        values (@user1, @user2)
+
+        delete from requests where requesterId = @user1 and requestedId = @user2
+        delete from requests where requesterId = @user2 and requestedId = @user1
     end
+end
+go
+
+create or alter procedure removeRequest
+    @requester int,
+    @requested int
+as
+begin
+    delete from requests where requesterId = @requester and requestedId = @requested
 end
 go
 
@@ -165,25 +175,17 @@ begin
     BEGIN
         SET @result = -1
     END
-    ELSE IF EXISTS (SELECT 1
-        FROM friends
-        WHERE userId = @blocker AND friendId = @blocked) OR EXISTS (SELECT 1
-        FROM friends
-        WHERE userId = @blocked AND friendId = @blocker)
+    ELSE
     BEGIN
         exec removeFriend @blocker, @blocked
         exec removeFriend @blocked, @blocker
-        set @result = 2
-    END
-    ELSE
-    BEGIN
-        insert into blocks
+                insert into blocks
             (blockerId, blockedId)
         values
             (@blocker, @blocked)
         delete from requests where requesterId = @blocker and requestedId = @blocked
         delete from requests where requesterId = @blocked and requestedId = @blocker
-        SET @result = 1
+        set @result = 1
     END
 end
 go
@@ -262,6 +264,14 @@ begin
         id not in (select blockedId
         from blocks
         where blockerId = @id)
+        and
+        id not in (select requesterId
+        from requests
+        where requestedId = @id)
+        and
+        id not in (select requestedId
+        from requests
+        where requesterId = @id)
 end
 go
 
@@ -272,6 +282,26 @@ begin
     select blockedId as Blocked
     from blocks
     where blockerId = @id
+end
+go
+
+create or alter procedure getSentRequestList
+    @id int
+as
+begin
+    select requestedId as Requested
+    from requests
+    where requesterId = @id
+end
+go
+
+create or alter procedure getReceivedRequestList
+    @id int
+as
+begin
+    select requesterId as Requester
+    from requests
+    where requestedId = @id
 end
 go
 

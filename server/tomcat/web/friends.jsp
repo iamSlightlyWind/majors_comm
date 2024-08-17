@@ -19,13 +19,12 @@
                 <br>
             </c:forEach>
             <p>Users</p>
-            <c:forEach var="user" items="${notFriends}">
+            <c:forEach var="user" items="${users}">
                 <form action="/relation" method="post">
                     <p>${user}</p>
                     <input type="hidden" name="theirID" value="${user.id}" />
                     <input type="submit" name="action" value="add" />
                     <input type="submit" name="action" value="block" />
-                    <input type="submit" name="action" value="unblock" />
                 </form>
                 <br>
             </c:forEach>
@@ -34,8 +33,25 @@
                 <form action="/relation" method="post">
                     <p>${requestee}</p>
                     <input type="hidden" name="theirID" value="${requestee.id}" />
-                    <input type="submit" name="action" value="accept" />
-                    <input type="submit" name="action" value="reject" />
+                    <input type="submit" name="action" value="removeRequest" />
+                </form>
+                <br>
+            </c:forEach>
+            <p>Received</p>
+            <c:forEach var="requester" items="${received}">
+                <form action="/relation" method="post">
+                    <p>${requester}</p>
+                    <input type="hidden" name="theirID" value="${requester.id}" />
+                    <input type="submit" name="action" value="add" />
+                </form>
+                <br>
+            </c:forEach>
+            <p>Blocked</p>
+            <c:forEach var="blocked" items="${blocked}">
+                <form action="/relation" method="post">
+                    <p>${blocked}</p>
+                    <input type="hidden" name="theirID" value="${blocked.id}" />
+                    <input type="submit" name="action" value="unblock" />
                 </form>
                 <br>
             </c:forEach>

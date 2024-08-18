@@ -85,10 +85,18 @@ create or alter procedure setFriend
 as
 begin
     begin
-        insert into friends
-            (userId, friendId)
-        values
-            (@user1, @user2)
+        if not exists (
+            select 1
+            from friends
+            where (userId = @user1 and friendId = @user2)
+               or (userId = @user2 and friendId = @user1)
+        )
+        begin
+            insert into friends
+                (userId, friendId)
+            values
+                (@user1, @user2)
+        end
 
         delete from requests where requesterId = @user1 and requestedId = @user2
         delete from requests where requesterId = @user2 and requestedId = @user1

@@ -336,7 +336,7 @@
                 </span>
               </a>
             </form>
-            <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+            <img alt="image" src="/Auth/1.png"
               class="authentication-register-image" />
           </div>
         </div>

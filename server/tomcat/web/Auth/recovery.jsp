@@ -362,8 +362,7 @@
                 </span>
               </button>
             </form>
-            <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-              class="authentication-login-image" />
+            <img alt="image" src="/Auth/2.png" class="authentication-login-image" />
           </div>
         </div>
       </div>

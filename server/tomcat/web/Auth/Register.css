@@ -586,9 +586,10 @@
   float: right;
   width: 70vh;
   align-self: flex-end;
-  margin-top: 10vh;
+  margin-bottom: 5vh;
   object-fit: cover;
   margin-left: 25vw;
+  border-radius: 15px;
 }
 
 @media(max-width: 767px) {

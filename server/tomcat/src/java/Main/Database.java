@@ -57,15 +57,16 @@ public class Database {
 
     public static boolean addUser(User current) {
         try {
-            var statement = connection.prepareCall("{call addUser(?, ?, ?, ?, ?, ?)}");
+            var statement = connection.prepareCall("{call addUser(?, ?, ?, ?, ?, ?, ?)}");
             statement.setString(1, current.username);
-            statement.setString(2, current.password);
-            statement.setString(3, current.email);
-            statement.setString(4, current.dob);
-            statement.setInt(5, current.gender);
-            statement.registerOutParameter(6, java.sql.Types.INTEGER);
+            statement.setString(2, current.fullname);
+            statement.setString(3, current.password);
+            statement.setString(4, current.email);
+            statement.setString(5, current.dob);
+            statement.setInt(6, current.gender);
+            statement.registerOutParameter(7, java.sql.Types.INTEGER);
             statement.execute();
-            return statement.getInt(6) == 1;
+            return statement.getInt(7) == 1;
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }

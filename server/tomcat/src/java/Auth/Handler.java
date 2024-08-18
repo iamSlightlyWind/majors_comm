@@ -88,6 +88,7 @@ public class Handler extends HttpServlet {
         }
 
         Database.addUser(current);
+        response.sendRedirect("/Auth/Login.jsp");
     }
 
     protected void register(HttpServletRequest request, HttpServletResponse response)

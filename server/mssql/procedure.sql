@@ -116,6 +116,7 @@ go
 
 create or alter procedure addUser
     @username nvarchar(15),
+    @fullname nvarchar(50),
     @password nvarchar(32),
     @email nvarchar(100),
     @dateOfBirth date,
@@ -125,9 +126,9 @@ as
 begin
     begin
         insert into users
-            (username, password, email, dateOfBirth, gender)
+            (username, fullname, password, email, dateOfBirth, gender)
         values
-            (@username, @password, @email, @dateOfBirth, @gender)
+            (@username, @fullname, @password, @email, @dateOfBirth, @gender)
         set @result = 1
     end
 end

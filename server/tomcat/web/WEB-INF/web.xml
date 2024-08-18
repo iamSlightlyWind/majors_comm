@@ -16,6 +16,10 @@
         <servlet-name>Moderation</servlet-name>
         <servlet-class>Relation.Moderation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Handler</servlet-name>
+        <servlet-class>Stats.Handler</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Relation</servlet-name>
         <url-pattern>/relation</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>Moderation</servlet-name>
         <url-pattern>/moderate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Handler</servlet-name>
+        <url-pattern>/stats</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>auth</welcome-file>

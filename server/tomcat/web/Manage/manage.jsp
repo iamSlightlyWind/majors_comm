@@ -6,8 +6,8 @@
         <html lang="en">
 
         <head>
-          <title>Manage - Fearless Primary Shrew</title>
-          <meta property="og:title" content="Manage - Fearless Primary Shrew" />
+          <title>Manage - Major's Comm</title>
+          <meta property="og:title" content="Manage - Major's Comm" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta charset="utf-8" />
           <meta property="twitter:card" content="summary_large_image" />

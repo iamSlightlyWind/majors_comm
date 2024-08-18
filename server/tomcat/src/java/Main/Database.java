@@ -461,4 +461,55 @@ public class Database {
         }
         return null;
     }
+
+    public static int getTotalMessages(String fromDate, String toDate) {
+        try {
+            var statement = connection.prepareCall("{call getTotalMessages(?, ?)}");
+            statement.setString(1, fromDate);
+            statement.setString(2, toDate);
+            var result = statement.executeQuery();
+            result.next();
+            return result.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public static int getTotalUsers() {
+        try {
+            var statement = connection.prepareCall("{call getTotalUsers()}");
+            var result = statement.executeQuery();
+            result.next();
+            return result.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public static int getDeactivatedUsers() {
+        try {
+            var statement = connection.prepareCall("{call getDeactivatedUsers()}");
+            var result = statement.executeQuery();
+            result.next();
+            return result.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public static int getTotalModerators() {
+        try {
+            var statement = connection.prepareCall("{call getTotalModerators()}");
+            var result = statement.executeQuery();
+            result.next();
+            return result.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
 }

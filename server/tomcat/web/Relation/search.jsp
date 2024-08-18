@@ -273,7 +273,7 @@
                         <button type="submit" name="action" value="searchFriend" style="visibility: hidden;"></button>
                       </form>
                       <c:forEach var="friend" items="${friends}">
-                        <form class="search-found-form1" action="/relation" method="post">
+                        <form class="search-found-form1" action="/relation" method="post" onclick="window.location.href='/chat?uid=${friend.id}'">
                           <input type="hidden" name="theirID" value="${friend.id}" />
                           <div class="search-container15">
                             <img src="/upload/profile/${friend.id}.png" alt="image" class="search-image1" />

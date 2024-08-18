@@ -525,3 +525,32 @@ begin
     where active = 0 and role = 0
 end
 go
+
+create or alter procedure getTotalMessages
+    @fromDate datetime = null,
+    @toDate datetime = null
+as
+begin
+    select count(*) as TotalMessages
+    from messages
+    where (@fromDate is null or time >= @fromDate)
+        and (@toDate is null or time <= @toDate)
+end
+go
+
+create or alter procedure getTotalUsers
+as
+begin
+    select count(*) as TotalUsers
+    from users
+end
+go
+
+create or alter procedure getTotalModerators
+as
+begin
+    select count(*) as TotalModerators
+    from users
+    where role = 1
+end
+go

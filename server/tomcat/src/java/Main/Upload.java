@@ -20,7 +20,6 @@ public class Upload extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
-        System.out.println(">>> Action: " + action);
 
         switch (action) {
             case "updateProfile":

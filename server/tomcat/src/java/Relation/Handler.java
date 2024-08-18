@@ -126,13 +126,23 @@ public class Handler extends HttpServlet {
         ArrayList<User> received = Database.getReceivedRequestList(current);
         ArrayList<User> blocked = Database.getBlockList(current);
         ArrayList<User> users = Database.getUserList(current);
+        ArrayList<User> requests = new ArrayList<>();
+        for (User user : received) {
+            if (!friend.contains(user) && !blocked.contains(user)) {
+                requests.add(user);
+            }
+        }
+        for (User user : requested) {
+            if (!friend.contains(user) && !blocked.contains(user)) {
+                requests.add(user);
+            }
+        }
 
         request.setAttribute("friends", friend);
-        request.setAttribute("requested", requested);
-        request.setAttribute("received", received);
         request.setAttribute("blocked", blocked);
         request.setAttribute("users", users);
-        request.getRequestDispatcher("friends.jsp").forward(request, response);
+        request.setAttribute("requests", requests);
+        request.getRequestDispatcher("/Relation/search.jsp").forward(request, response);
     }
 
     @Override

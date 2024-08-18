@@ -179,9 +179,8 @@
         <div class="search-container10">
           <div class="search-container11">
             <navloggedin-wrapper class="navloggedin-wrapper">
-              <!--Navloggedin component-->
               <div class="navloggedin-navloggedin">
-                <div class="navloggedin-logo">
+                <div class="navloggedin-logo" style="margin-left: 1.5vw;">
                   <span>
                     <fragment class="search-fragment1">
                       <span class="search-text10">Major's</span>
@@ -197,31 +196,24 @@
                   </span>
                 </div>
                 <div class="navloggedin-menu">
-                  <button type="button" class="navloggedin-button1 button">
+                  <button type="button" class="navloggedin-button1 button" onclick="window.location.href='/chat'">
                     <svg viewBox="0 0 1152 1024" class="navloggedin-icon10">
                       <path
                         d="M1088 901.166c0 45.5 26.028 84.908 64 104.184v15.938c-10.626 1.454-21.472 2.224-32.5 2.224-68.008 0-129.348-28.528-172.722-74.264-26.222 6.982-54.002 10.752-82.778 10.752-159.058 0-288-114.616-288-256s128.942-256 288-256c159.058 0 288 114.616 288 256 0 55.348-19.764 106.592-53.356 148.466-6.824 14.824-10.644 31.312-10.644 48.7zM512 0c278.458 0 504.992 180.614 511.836 405.52-49.182-21.92-103.586-33.52-159.836-33.52-95.56 0-185.816 33.446-254.138 94.178-70.846 62.972-109.862 147.434-109.862 237.822 0 44.672 9.544 87.888 27.736 127.788-5.228 0.126-10.468 0.212-15.736 0.212-27.156 0-53.81-1.734-79.824-5.044-109.978 109.978-241.25 129.7-368.176 132.596v-26.916c68.536-33.578 128-94.74 128-164.636 0-9.754-0.758-19.33-2.164-28.696-115.796-76.264-189.836-192.754-189.836-323.304 0-229.75 229.23-416 512-416z">
                       </path>
                     </svg>
                   </button>
-                  <button type="button" class="navloggedin-button2 button">
+                  <button type="button" class="navloggedin-button2 button" onclick="window.location.href='/relation'">
                     <svg viewBox="0 0 1024 1024" class="navloggedin-icon12">
                       <path
                         d="M682 554q56 0 122 16t122 52 56 82v106h-256v-106q0-88-84-148 14-2 40-2zM342 554q56 0 122 16t121 52 55 82v106h-598v-106q0-46 56-82t122-52 122-16zM342 470q-52 0-90-38t-38-90 38-90 90-38 89 38 37 90-37 90-89 38zM682 470q-52 0-90-38t-38-90 38-90 90-38 90 38 38 90-38 90-90 38z">
                       </path>
                     </svg>
                   </button>
-                  <button type="button" class="navloggedin-button3 button">
-                    <svg viewBox="0 0 1024 1024">
-                      <path
-                        d="M992.262 871.396l-242.552-206.294c-25.074-22.566-51.89-32.926-73.552-31.926 57.256-67.068 91.842-154.078 91.842-249.176 0-212.078-171.922-384-384-384-212.076 0-384 171.922-384 384s171.922 384 384 384c95.098 0 182.108-34.586 249.176-91.844-1 21.662 9.36 48.478 31.926 73.552l206.294 242.552c35.322 39.246 93.022 42.554 128.22 7.356s31.892-92.898-7.354-128.22zM384 640c-141.384 0-256-114.616-256-256s114.616-256 256-256 256 114.616 256 256-114.614 256-256 256z">
-                      </path>
-                    </svg>
-                  </button>
                 </div>
                 <div class="navloggedin-footer">
-                  <button type="button" class="navloggedin-button4 button">
-                    <svg viewBox="0 0 1024 1024" class="navloggedin-icon16">
+                  <button type="button" class="navloggedin-button4 button" onclick="window.location.href='/profile'">
+                    <svg viewBox="0 0 1024 1024" class="navloggedin-icon14">
                       <path
                         d="M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z">
                       </path>
@@ -234,7 +226,8 @@
                       </path>
                     </svg>
                   </button>
-                  <button type="button" class="navloggedin-button6 button">
+                  <button type="button" class="navloggedin-button6 button"
+                    onclick="window.location.href='/auth?action=logout'">
                     <svg viewBox="0 0 1024 1024" class="navloggedin-icon20">
                       <path
                         d="M170 214v596h342v86h-342q-34 0-59-26t-25-60v-596q0-34 25-60t59-26h342v86h-342zM726 298l212 214-212 214-60-62 110-110h-434v-84h434l-110-112z">
@@ -256,21 +249,23 @@
                   <form class="search-search-form1">
                     <input type="text" placeholder="Search for friends" class="search-textinput1 input" />
                   </form>
-                  <form class="search-found-form1">
-                    <div class="search-container15">
-                      <img src="https://play.teleporthq.io/static/svg/default-img.svg" alt="image"
-                        class="search-image1" />
-                      <span class="search-text17">Text</span>
-                      <div class="search-container16">
-                        <button type="button" class="search-button1 button">
-                          Remove
-                        </button>
-                        <button type="button" class="search-button2 button">
-                          Block
-                        </button>
+                  <c:forEach var="friend" items="${friends}">
+                    <form class="search-found-form1" action="/relation" method="post">
+                      <input type="hidden" name="theirID" value="${friend.id}" />
+                      <div class="search-container15">
+                        <img src="/upload/profile/${friend.id}.png" alt="image" class="search-image1" />
+                        <span class="search-text17" style="width: 8vw;">${friend.fullName}</span>
+                        <div class="search-container16">
+                          <button type="submit" name="action" value="remove" class="search-button1 button">
+                            Remove
+                          </button>
+                          <button type="submit" name="action" value="block" class="search-button2 button">
+                            Block
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </c:forEach>
                 </div>
               </div>
               <div class="search-request-container">
@@ -302,8 +297,11 @@
                         class="search-image3" />
                       <span class="search-text22">Text</span>
                       <div class="search-container22">
-                        <button type="button" class="search-button4 button">
+                        <button type="submit" name="action" value="remove" class="search-button1 button">
                           Accept
+                        </button>
+                        <button type="submit" name="action" value="block" class="search-button2 button">
+                          Deny
                         </button>
                       </div>
                     </div>
@@ -321,18 +319,20 @@
                   <form class="search-search-form3">
                     <input type="text" placeholder="Search in blocked" class="search-textinput3 input" />
                   </form>
-                  <form class="search-found-form2">
-                    <div class="search-container25">
-                      <img src="https://play.teleporthq.io/static/svg/default-img.svg" alt="image"
-                        class="search-image4" />
-                      <span class="search-text26">Text</span>
-                      <div class="search-container26">
-                        <button type="button" class="search-button5 button">
-                          Unblock
-                        </button>
+                  <c:forEach var="blocked" items="${blocked}">
+                    <form class="search-found-form2">
+                      <div class="search-container25">
+                        <img src="/upload/profile/${blocked.id}.png" alt="image" class="search-image4" />
+                        <span class="search-text26">${blocked.fullName}</span>
+                        <input type="hidden" name="theirID" value="${blocked.id}" />
+                        <div class="search-container26">
+                          <button type="submit" name="action" value="unblock" class="search-button5 button">
+                            Unblock
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </c:forEach>
                 </div>
               </div>
               <div class="search-friend-container3">
@@ -346,21 +346,22 @@
                   <form class="search-search-form4">
                     <input type="text" placeholder="Search for users" class="search-textinput4 input" />
                   </form>
-                  <form class="search-found-form3">
-                    <div class="search-container29">
-                      <img src="https://play.teleporthq.io/static/svg/default-img.svg" alt="image"
-                        class="search-image5" />
-                      <span class="search-text30">Text</span>
-                      <div class="search-container30">
-                        <button type="button" class="search-button6 button">
-                          Request
-                        </button>
-                        <button type="button" class="search-button7 button">
-                          Block
-                        </button>
+                  <c:forEach var="user" items="${users}">
+                    <form class="search-found-form3">
+                      <div class="search-container29">
+                        <img src="/upload/profile/${user.id}.png" alt="image" class="search-image5" />
+                        <span class="search-text30">${user.fullName}</span>
+                        <div class="search-container30">
+                          <button type="submit" name="action" value="add" class="search-button6 button">
+                            Request
+                          </button>
+                          <button type="submit" name="action" value="block" class="search-button7 button">
+                            Block
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </c:forEach>
                 </div>
               </div>
             </div>

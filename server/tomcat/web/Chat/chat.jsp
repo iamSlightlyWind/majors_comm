@@ -224,7 +224,7 @@
                         onclick="window.location.href='/chat?uid=${preview.theirID}'">
                         <div class="chat-list-item-chat-list-item">
                           <form class="chat-list-item-form">
-                            <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                            <img alt="image" src="/upload/profile/${preview.theirID}.png"
                               class="chat-list-item-image" />
                             <div class="chat-list-item-container">
                               <div class="chat-list-item-username-box">
@@ -258,8 +258,7 @@
                 <div class="chat-container5">
                   <c:if test="${not empty theirID}">
                     <div class="chat-username-box">
-                      <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                        class="chat-image1" />
+                      <img alt="image" src="/upload/profile/${theirID}.png" class="chat-image1" />
                       <span class="chat-username">
                         <span>${theirName}</span>
                         <br />
@@ -288,7 +287,7 @@
                                 </delete-button-wrapper-wjec>
                               </div>
                             </c:if>
-                            <c:if test="${message.type != image}">
+                            <c:if test="${message.type != 'image'}">
                               <c:if test="${message.location == 'first'}">
                                 <div class="chat-our-message-first-with-delete">
                                   <div class="chat-our-message-first">

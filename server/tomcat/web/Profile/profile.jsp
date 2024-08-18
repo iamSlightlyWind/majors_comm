@@ -242,9 +242,9 @@
                 <div class="edit-profile-component-root-form">
                   <div class="edit-profile-component-container2">
                     <form action="/profile" method="post" class="edit-profile-component-can-edit">
-                      <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                      <img alt="image" src="/upload/profile/${user.id}.png"
                         class="edit-profile-component-image" />
-                      <button type="button" class="edit-profile-component-button1 button">
+                      <button type="button" class="edit-profile-component-button1 button" id="updateProfileButton">
                         <svg viewBox="0 0 1097.142857142857 1024">
                           <path
                             d="M365.714 329.143c0 60.571-49.143 109.714-109.714 109.714s-109.714-49.143-109.714-109.714 49.143-109.714 109.714-109.714 109.714 49.143 109.714 109.714zM950.857 548.571v256h-804.571v-109.714l182.857-182.857 91.429 91.429 292.571-292.571zM1005.714 146.286h-914.286c-9.714 0-18.286 8.571-18.286 18.286v694.857c0 9.714 8.571 18.286 18.286 18.286h914.286c9.714 0 18.286-8.571 18.286-18.286v-694.857c0-9.714-8.571-18.286-18.286-18.286zM1097.143 164.571v694.857c0 50.286-41.143 91.429-91.429 91.429h-914.286c-50.286 0-91.429-41.143-91.429-91.429v-694.857c0-50.286 41.143-91.429 91.429-91.429h914.286c50.286 0 91.429 41.143 91.429 91.429z">
@@ -325,6 +325,55 @@
           </div>
         </div>
       </div>
+      <script>
+        function getQueryParam(name) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(name);
+        }
+
+        const uid = getQueryParam('uid');
+
+        function setupFileUpload(buttonId, actionValue) {
+          const fileInput = document.createElement('input');
+          fileInput.type = 'file';
+          fileInput.name = 'file';
+          fileInput.style.display = 'none';
+          document.body.appendChild(fileInput);
+
+          document.getElementById(buttonId).addEventListener('click', function () {
+            fileInput.click();
+          });
+
+          fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+              const form = document.createElement('form');
+              form.action = '/upload';
+              form.method = 'post';
+              form.enctype = 'multipart/form-data';
+              form.style.display = 'none';
+
+              const actionInput = document.createElement('input');
+              actionInput.type = 'hidden';
+              actionInput.name = 'action';
+              actionInput.value = actionValue;
+
+              const uidInput = document.createElement('input');
+              uidInput.type = 'hidden';
+              uidInput.name = 'uid';
+              uidInput.value = uid;
+
+              form.appendChild(fileInput);
+              form.appendChild(actionInput);
+              form.appendChild(uidInput);
+
+              document.body.appendChild(form);
+              form.submit();
+            }
+          });
+        }
+
+        setupFileUpload('updateProfileButton', 'updateProfile');
+      </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 

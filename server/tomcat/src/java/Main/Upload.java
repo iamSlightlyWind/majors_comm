@@ -82,11 +82,13 @@ public class Upload extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         int theirID = Integer.parseInt(request.getParameter("uid"));
         Database.sendFileMessage(user.id, theirID, dateFolder + "/" + fileName);
+        response.sendRedirect("/chat?uid=" + theirID);
     }
 
     protected void uploadImage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        User user = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("uid"));
         String applicationPath = request.getServletContext().getRealPath("");
 
         String dateFolder = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -105,11 +107,9 @@ public class Upload extends HttpServlet {
             try (InputStream fileContent = filePart.getInputStream()) {
                 Files.copy(fileContent, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
             }
-            User user = (User) request.getSession().getAttribute("user");
-            int theirID = Integer.parseInt(request.getParameter("uid"));
             Database.sendImageMessage(user.id, theirID, dateFolder + "/" + fileName);
-            System.out.println(dateFolder + "/" + fileName);
         }
+        response.sendRedirect("/chat?uid=" + theirID);
     }
 
     protected void updateProfile(HttpServletRequest request, HttpServletResponse response)
@@ -133,6 +133,7 @@ public class Upload extends HttpServlet {
                 Files.copy(fileContent, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
             }
         }
+        response.sendRedirect("/profile");
     }
 
     @Override

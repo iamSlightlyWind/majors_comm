@@ -10,6 +10,10 @@ public class User {
     public int gender;
     public int relation = 0;
 
+    public int getRelation() {
+        return this.relation;
+    }
+
     public User() {
     }
 

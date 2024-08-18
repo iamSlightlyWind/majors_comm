@@ -40,10 +40,25 @@ public class Handler extends HttpServlet {
                 removeRequest(request, response);
                 viewAll(request, response);
                 break;
+            case "deny":
+                denyRequest(request, response);
+                viewAll(request, response);
+                break;
             default:
                 viewAll(request, response);
                 break;
         }
+    }
+
+    public static void denyRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        int currentID = current.id;
+        User them = Database.getUser(theirID);
+        Database.removeFriendRequest(theirID, currentID);
+
+        request.setAttribute("status", "Friend request removed from " + them.fullname);
     }
 
     public static void removeRequest(HttpServletRequest request, HttpServletResponse response)

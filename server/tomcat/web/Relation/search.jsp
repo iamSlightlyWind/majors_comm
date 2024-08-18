@@ -279,33 +279,30 @@
                   <form class="search-search-form2">
                     <input type="text" placeholder="Search for requests" class="search-textinput2 input" />
                   </form>
-                  <form class="search-requested-form">
-                    <div class="search-container19">
-                      <img src="https://play.teleporthq.io/static/svg/default-img.svg" alt="image"
-                        class="search-image2" />
-                      <span class="search-text21">Text</span>
-                      <div class="search-container20">
-                        <button type="button" class="search-button3 button">
-                          Remove
-                        </button>
+                  <c:forEach var="request" items="${requests}">
+                    <form class="search-requested-form">
+                      <div class="search-container19">
+                        <img src="/upload/profile/${request.id}.png" alt="image" class="search-image2" />
+                        <span class="search-text21">${request.fullName}</span>
+                        <input type="hidden" name="theirID" value="${request.id}" />
+                        <div class="search-container20">
+                          <c:if test="${request.relation == 2}">
+                            <button type="submit" name="action" value="removeRequest" class="search-button3 button">
+                              Remove
+                            </button>
+                          </c:if>
+                          <c:if test="${request.relation == 3}">
+                            <button type="submit" name="action" value="add" class="search-button1 button">
+                              Accept
+                            </button>
+                            <button type="submit" name="action" value="deny" class="search-button2 button">
+                              Deny
+                            </button>
+                          </c:if>
+                        </div>
                       </div>
-                    </div>
-                  </form>
-                  <form class="search-received-form">
-                    <div class="search-container21">
-                      <img src="https://play.teleporthq.io/static/svg/default-img.svg" alt="image"
-                        class="search-image3" />
-                      <span class="search-text22">Text</span>
-                      <div class="search-container22">
-                        <button type="submit" name="action" value="remove" class="search-button1 button">
-                          Accept
-                        </button>
-                        <button type="submit" name="action" value="block" class="search-button2 button">
-                          Deny
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                    </form>
+                  </c:forEach>
                 </div>
               </div>
               <div class="search-friend-container2">
@@ -348,6 +345,7 @@
                   </form>
                   <c:forEach var="user" items="${users}">
                     <form class="search-found-form3">
+                      <input type="hidden" name="theirID" value="${user.id}" />
                       <div class="search-container29">
                         <img src="/upload/profile/${user.id}.png" alt="image" class="search-image5" />
                         <span class="search-text30">${user.fullName}</span>

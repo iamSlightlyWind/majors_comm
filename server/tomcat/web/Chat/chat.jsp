@@ -4,8 +4,8 @@
     <html lang="en">
 
     <head>
-      <title>Chat - Fearless Primary Shrew</title>
-      <meta property="og:title" content="Chat - Fearless Primary Shrew" />
+      <title>Chat - Major's Comm</title>
+      <meta property="og:title" content="Chat - Major's Comm" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
       <meta property="twitter:card" content="summary_large_image" />
@@ -269,24 +269,14 @@
                       <div class="chat-chats">
                         <c:forEach var="message" items="${messages}">
                           <c:if test="${message.isMine}">
-                            <c:if test="${message.location == 'first'}">
-                              <div class="chat-our-message-first-with-delete">
-                                <div class="chat-our-message-first">
-                                  <span class="chat-text26">
-                                    <c:if test="${message.type == 'text'}">
-                                      <span>${message.content}</span>
-                                    </c:if>
-                                    <c:if test="${message.type == 'file'}">
-                                      <a href="/upload?action=download&file=${message.link}"
-                                        style="text-decoration: underline;">${message.content}</a>
-                                    </c:if>
-                                    <br />
-                                  </span>
+                            <c:if test="${message.type == 'image'}">
+                              <div class="chat-our-image-with-delete">
+                                <div class="chat-our-image">
+                                  <img src="/upload/images/${message.link}" class="chat-image3"/>
                                 </div>
-                                <delete-button-wrapper class="delete-button-delete-button-wrapper">
-                                  <div class="delete-button-container delete-button-root-class-name">
-                                    <button type="button" class="delete-button-button button"
-                                      onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
+                                <delete-button-wrapper-wjec class="delete-button-delete-button-wrapper-wjec">
+                                  <div class="delete-button-container delete-button-root-class-name1">
+                                    <button type="button" class="delete-button-button button">
                                       <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
                                         <path
                                           d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
@@ -294,62 +284,92 @@
                                       </svg>
                                     </button>
                                   </div>
-                                </delete-button-wrapper>
+                                </delete-button-wrapper-wjec>
                               </div>
                             </c:if>
-                            <c:if test="${message.location == 'middle'}">
-                              <div class="chat-our-message-middle1">
-                                <div class="chat-our-message-middle2">
-                                  <span class="chat-text29">
-                                    <c:if test="${message.type == 'text'}">
-                                      <span>${message.content}</span>
-                                    </c:if>
-                                    <c:if test="${message.type == 'file'}">
-                                      <a href="/upload?action=download&file=${message.link}"
-                                        style="text-decoration: underline;">${message.content}</a>
-                                    </c:if>
-                                  </span>
-                                </div>
-                                <delete-button-wrapper-iidu class="delete-button-delete-button-wrapper-iidu">
-                                  <div class="delete-button-container delete-button-root-class-name2">
-                                    <button type="button" class="delete-button-button button"
-                                      onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
-                                      <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
-                                        <path
-                                          d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
-                                        </path>
-                                      </svg>
-                                    </button>
+                            <c:if test="${message.type != image}">
+                              <c:if test="${message.location == 'first'}">
+                                <div class="chat-our-message-first-with-delete">
+                                  <div class="chat-our-message-first">
+                                    <span class="chat-text26">
+                                      <c:if test="${message.type == 'text'}">
+                                        <span>${message.content}</span>
+                                      </c:if>
+                                      <c:if test="${message.type == 'file'}">
+                                        <a href="/upload?action=download&file=${message.link}"
+                                          style="text-decoration: underline;">${message.content}</a>
+                                      </c:if>
+                                      <br />
+                                    </span>
                                   </div>
-                                </delete-button-wrapper-iidu>
-                              </div>
-                            </c:if>
-                            <c:if test="${message.location == 'last'}">
-                              <div class="chat-our-message-last1">
-                                <div class="chat-our-message-last2">
-                                  <span class="chat-text30">
-                                    <c:if test="${message.type == 'text'}">
-                                      <span>${message.content}</span>
-                                    </c:if>
-                                    <c:if test="${message.type == 'file'}">
-                                      <a href="/upload?action=download&file=${message.link}"
-                                        style="text-decoration: underline;">${message.content}</a>
-                                    </c:if>
-                                  </span>
+                                  <delete-button-wrapper class="delete-button-delete-button-wrapper">
+                                    <div class="delete-button-container delete-button-root-class-name">
+                                      <button type="button" class="delete-button-button button"
+                                        onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
+                                        <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
+                                          <path
+                                            d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
+                                          </path>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </delete-button-wrapper>
                                 </div>
-                                <delete-button-wrapper-mqwu class="delete-button-delete-button-wrapper-mqwu">
-                                  <div class="delete-button-container delete-button-root-class-name3">
-                                    <button type="button" class="delete-button-button button"
-                                      onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
-                                      <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
-                                        <path
-                                          d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
-                                        </path>
-                                      </svg>
-                                    </button>
+                              </c:if>
+                              <c:if test="${message.location == 'middle'}">
+                                <div class="chat-our-message-middle1">
+                                  <div class="chat-our-message-middle2">
+                                    <span class="chat-text29">
+                                      <c:if test="${message.type == 'text'}">
+                                        <span>${message.content}</span>
+                                      </c:if>
+                                      <c:if test="${message.type == 'file'}">
+                                        <a href="/upload?action=download&file=${message.link}"
+                                          style="text-decoration: underline;">${message.content}</a>
+                                      </c:if>
+                                    </span>
                                   </div>
-                                </delete-button-wrapper-mqwu>
-                              </div>
+                                  <delete-button-wrapper-iidu class="delete-button-delete-button-wrapper-iidu">
+                                    <div class="delete-button-container delete-button-root-class-name2">
+                                      <button type="button" class="delete-button-button button"
+                                        onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
+                                        <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
+                                          <path
+                                            d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
+                                          </path>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </delete-button-wrapper-iidu>
+                                </div>
+                              </c:if>
+                              <c:if test="${message.location == 'last'}">
+                                <div class="chat-our-message-last1">
+                                  <div class="chat-our-message-last2">
+                                    <span class="chat-text30">
+                                      <c:if test="${message.type == 'text'}">
+                                        <span>${message.content}</span>
+                                      </c:if>
+                                      <c:if test="${message.type == 'file'}">
+                                        <a href="/upload?action=download&file=${message.link}"
+                                          style="text-decoration: underline;">${message.content}</a>
+                                      </c:if>
+                                    </span>
+                                  </div>
+                                  <delete-button-wrapper-mqwu class="delete-button-delete-button-wrapper-mqwu">
+                                    <div class="delete-button-container delete-button-root-class-name3">
+                                      <button type="button" class="delete-button-button button"
+                                        onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
+                                        <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
+                                          <path
+                                            d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
+                                          </path>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </delete-button-wrapper-mqwu>
+                                </div>
+                              </c:if>
                             </c:if>
                           </c:if>
                           <c:if test="${!message.isMine}">
@@ -402,14 +422,14 @@
                       </div>
                       <form class="chat-input">
                         <div class="chat-container6">
-                          <button type="button" class="chat-button1 button">
+                          <button type="button" class="chat-button1 button" id="uploadImageButton">
                             <svg viewBox="0 0 1097.142857142857 1024" class="chat-icon1">
                               <path
                                 d="M365.714 329.143c0 60.571-49.143 109.714-109.714 109.714s-109.714-49.143-109.714-109.714 49.143-109.714 109.714-109.714 109.714 49.143 109.714 109.714zM950.857 548.571v256h-804.571v-109.714l182.857-182.857 91.429 91.429 292.571-292.571zM1005.714 146.286h-914.286c-9.714 0-18.286 8.571-18.286 18.286v694.857c0 9.714 8.571 18.286 18.286 18.286h914.286c9.714 0 18.286-8.571 18.286-18.286v-694.857c0-9.714-8.571-18.286-18.286-18.286zM1097.143 164.571v694.857c0 50.286-41.143 91.429-91.429 91.429h-914.286c-50.286 0-91.429-41.143-91.429-91.429v-694.857c0-50.286 41.143-91.429 91.429-91.429h914.286c50.286 0 91.429 41.143 91.429 91.429z">
                               </path>
                             </svg>
                           </button>
-                          <button type="button" class="chat-button2 button" id="uploadButton">
+                          <button type="button" class="chat-button2 button" id="uploadFileButton">
                             <svg viewBox="0 0 1024 1024" class="chat-icon3">
                               <path
                                 d="M704 256h64v490q0 98-68 167t-166 69-167-69-69-167v-532q0-70 51-121t121-51 120 51 50 121v448q0 44-31 75t-75 31-76-31-32-75v-406h64v406q0 18 13 30t31 12 30-12 12-30v-448q0-44-31-76t-75-32-76 32-32 76v532q0 70 51 121t121 51 120-51 50-121v-490z">
@@ -450,7 +470,52 @@
         fileInput.style.display = 'none';
         document.body.appendChild(fileInput);
 
-        document.getElementById('uploadButton').addEventListener('click', function () {
+        document.getElementById('uploadImageButton').addEventListener('click', function () {
+          fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function () {
+          if (this.files.length > 0) {
+            const form = document.createElement('form');
+            form.action = '/upload';
+            form.method = 'post';
+            form.enctype = 'multipart/form-data';
+            form.style.display = 'none';
+
+            const actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'action';
+            actionInput.value = 'uploadImage';
+
+            const uidInput = document.createElement('input');
+            uidInput.type = 'hidden';
+            uidInput.name = 'uid';
+            uidInput.value = uid;
+
+            form.appendChild(fileInput);
+            form.appendChild(actionInput);
+            form.appendChild(uidInput);
+
+            document.body.appendChild(form);
+            form.submit();
+          }
+        });
+      </script>
+      <script>
+        function getQueryParam(name) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(name);
+        }
+
+        const uid = getQueryParam('uid');
+
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.name = 'file';
+        fileInput.style.display = 'none';
+        document.body.appendChild(fileInput);
+
+        document.getElementById('uploadFileButton').addEventListener('click', function () {
           fileInput.click();
         });
 

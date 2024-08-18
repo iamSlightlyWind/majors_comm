@@ -15,7 +15,7 @@ public class Message {
         this.content = content;
         this.time = time;
 
-        if (type.equals("file")) {
+        if (!type.equals("text")) {
             this.link = content;
             this.content = content.split("/")[1];
         }

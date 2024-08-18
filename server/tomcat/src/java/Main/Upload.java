@@ -79,10 +79,7 @@ public class Upload extends HttpServlet {
             Files.copy(fileContent, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
         }
 
-        System.out.println(dateFolder + "/" + fileName);
-
         User user = (User) request.getSession().getAttribute("user");
-        System.out.println("UID: " + request.getParameter("uid"));
         int theirID = Integer.parseInt(request.getParameter("uid"));
         Database.sendFileMessage(user.id, theirID, dateFolder + "/" + fileName);
     }
@@ -111,6 +108,7 @@ public class Upload extends HttpServlet {
             User user = (User) request.getSession().getAttribute("user");
             int theirID = Integer.parseInt(request.getParameter("uid"));
             Database.sendImageMessage(user.id, theirID, dateFolder + "/" + fileName);
+            System.out.println(dateFolder + "/" + fileName);
         }
     }
 

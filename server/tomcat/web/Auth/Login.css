@@ -3,6 +3,7 @@
   display: flex;
   position: relative;
 }
+
 .navguest-navbar-interactive {
   width: 100%;
   display: flex;
@@ -14,6 +15,7 @@
   padding-bottom: var(--dl-space-space-twounits);
   justify-content: space-between;
 }
+
 .navguest-container1 {
   flex: 0 0 auto;
   width: 200px;
@@ -21,11 +23,13 @@
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navguest-desktop-menu {
   flex: 1;
   display: flex;
   justify-content: space-between;
 }
+
 .navguest-links {
   flex: 1;
   display: flex;
@@ -34,13 +38,16 @@
   flex-direction: row;
   justify-content: center;
 }
+
 .navguest-burger-menu {
   display: none;
 }
+
 .navguest-icon {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
+
 .navguest-mobile-menu {
   top: 0px;
   left: 0px;
@@ -54,11 +61,13 @@
   justify-content: space-between;
   background-color: #fff;
 }
+
 .navguest-nav {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navguest-top {
   width: 100%;
   display: flex;
@@ -66,18 +75,22 @@
   margin-bottom: var(--dl-space-space-threeunits);
   justify-content: space-between;
 }
+
 .navguest-logo {
   height: 2rem;
 }
+
 .navguest-close-menu {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .navguest-icon02 {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
+
 .navguest-links1 {
   flex: 0 0 auto;
   display: flex;
@@ -85,6 +98,7 @@
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navguest-buttons {
   display: flex;
   margin-top: var(--dl-space-space-unit);
@@ -92,172 +106,213 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .navguest-login {
   margin-right: var(--dl-space-space-twounits);
 }
+
 .navguest-icon04 {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
   margin-right: var(--dl-space-space-twounits);
 }
+
 .navguest-icon06 {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
   margin-right: var(--dl-space-space-twounits);
 }
+
 .navguest-icon08 {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
+
 .navguest-fragment08 {
   display: contents;
 }
+
 .navguest-text08 {
   display: inline-block;
   font-size: 1.5em;
   font-family: "Satisfy";
 }
+
 .navguest-fragment03 {
   display: contents;
 }
+
 .navguest-text03 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .navguest-fragment07 {
   display: contents;
 }
+
 .navguest-text07 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .navguest-fragment {
   display: contents;
 }
+
 .navguest-text {
   display: inline-block;
   font-family: "Nunito Sans";
 }
+
 .navguest-fragment02 {
   display: contents;
 }
+
 .navguest-text02 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .navguest-fragment10 {
   display: contents;
 }
+
 .navguest-text10 {
   display: inline-block;
   font-family: "Nunito Sans";
   margin-left: var(--dl-space-space-twounits);
 }
+
 .navguest-fragment06 {
   display: contents;
 }
+
 .navguest-text06 {
   display: inline-block;
 }
+
 .navguest-fragment05 {
   display: contents;
 }
+
 .navguest-text05 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .navguest-fragment04 {
   display: contents;
 }
+
 .navguest-text04 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .navguest-fragment11 {
   display: contents;
 }
+
 .navguest-text11 {
   display: inline-block;
   font-size: 1.5em;
   font-family: "Satisfy";
 }
+
 .navguest-fragment09 {
   display: contents;
 }
+
 .navguest-text09 {
   display: inline-block;
   font-family: "Nunito Sans";
   margin-left: var(--dl-space-space-twounits);
 }
+
 .navguest-fragment01 {
   display: contents;
 }
+
 .navguest-text01 {
   display: inline-block;
   font-family: "Nunito Sans";
   margin-left: var(--dl-space-space-twounits);
 }
+
 .navguest-fragment12 {
   display: contents;
 }
+
 .navguest-text12 {
   display: inline-block;
 }
-
-
 
 @media(max-width: 767px) {
   .navguest-navbar-interactive {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
+
   .navguest-desktop-menu {
     display: none;
   }
+
   .navguest-burger-menu {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .navguest-text06 {
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text07 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text08 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text09 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text10 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text03 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text02 {
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text05 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .navguest-text04 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
 }
+
 @media(max-width: 479px) {
   .navguest-navbar-interactive {
     padding: var(--dl-space-space-unit);
   }
+
   .navguest-mobile-menu {
     padding: 16px;
   }
@@ -271,106 +326,134 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .authentication-login-fragment {
   display: contents;
 }
+
 .authentication-login-text {
   display: inline-block;
   font-family: "Nunito Sans";
 }
+
 .authentication-login-fragment01 {
   display: contents;
 }
+
 .authentication-login-text01 {
   display: inline-block;
   font-family: "Nunito Sans";
   margin-left: var(--dl-space-space-twounits);
 }
+
 .authentication-login-fragment02 {
   display: contents;
 }
+
 .authentication-login-text02 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .authentication-login-fragment03 {
   display: contents;
 }
+
 .authentication-login-text03 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .authentication-login-fragment04 {
   display: contents;
 }
+
 .authentication-login-text04 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .authentication-login-fragment05 {
   display: contents;
 }
+
 .authentication-login-text05 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .authentication-login-fragment06 {
   display: contents;
 }
+
 .authentication-login-text06 {
   display: inline-block;
 }
+
 .authentication-login-fragment07 {
   display: contents;
 }
+
 .authentication-login-text07 {
   display: inline-block;
   margin-bottom: var(--dl-space-space-unit);
 }
+
 .authentication-login-fragment08 {
   display: contents;
 }
+
 .authentication-login-text08 {
   display: inline-block;
   font-size: 1.5em;
   font-family: "Satisfy";
 }
+
 .authentication-login-fragment09 {
   display: contents;
 }
+
 .authentication-login-text09 {
   display: inline-block;
   font-family: "Nunito Sans";
   margin-left: var(--dl-space-space-twounits);
 }
+
 .authentication-login-fragment10 {
   display: contents;
 }
+
 .authentication-login-text10 {
   display: inline-block;
   font-family: "Nunito Sans";
   margin-left: var(--dl-space-space-twounits);
 }
+
 .authentication-login-fragment11 {
   display: contents;
 }
+
 .authentication-login-text11 {
   display: inline-block;
   font-size: 1.5em;
   font-family: "Satisfy";
 }
+
 .authentication-login-fragment12 {
   display: contents;
 }
+
 .authentication-login-text12 {
   display: inline-block;
 }
+
 .authentication-login-container1 {
   flex: 0 0 auto;
   width: 100%;
   display: flex;
   align-items: flex-start;
 }
+
 .authentication-login-form {
   float: left;
   width: 20vw;
@@ -379,6 +462,7 @@
   margin-top: 9%;
   margin-left: 10vw;
 }
+
 .authentication-login-container2 {
   display: flex;
   align-items: center;
@@ -386,16 +470,19 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .authentication-login-text13 {
   width: 100%;
   font-size: 2.5em;
   font-family: "Courgette";
 }
+
 .authentication-login-text14 {
   width: 100%;
   font-size: 5em;
   font-family: "Satisfy";
 }
+
 .authentication-login-input {
   width: 100%;
   display: flex;
@@ -404,6 +491,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .authentication-login-textinput {
   width: 100%;
   border: none;
@@ -411,12 +499,15 @@
   border-radius: 10px;
   background-color: #ecefef;
 }
+
 .authentication-login-container3 {
   height: 1vh;
 }
+
 .authentication-login-container4 {
   display: contents;
 }
+
 .authentication-login-input1 {
   width: 100%;
   border: none;
@@ -424,6 +515,7 @@
   border-radius: 10px;
   background-color: #ecefef;
 }
+
 .authentication-login-button {
   float: left;
   width: 25%;
@@ -431,18 +523,22 @@
   border-color: #888888;
   border-radius: 10px;
 }
+
 .authentication-login-text15 {
   color: #404040;
 }
+
 .authentication-login-button1 {
   float: right;
   width: fit-content;
   border: none;
 }
+
 .authentication-login-text18 {
   color: #404040;
   font-family: "Nunito Sans";
 }
+
 .authentication-login-button2 {
   width: 100%;
   border: none;
@@ -450,27 +546,33 @@
   border-radius: 0px;
   margin-bottom: 3vh;
 }
+
 .authentication-login-button3 {
   clear: botj;
   width: 100%;
   border-color: #888888;
   border-radius: 10px;
 }
+
 .authentication-login-text22 {
   color: rgb(64, 64, 64);
 }
+
 .authentication-login-icon {
   color: #404040;
   width: 24px;
   height: 24px;
 }
+
 .authentication-login-button4 {
   border: none;
   margin-top: 1vh;
 }
+
 .authentication-login-text25 {
   color: rgb(64, 64, 64);
 }
+
 .authentication-login-image {
   float: right;
   width: 70vh;
@@ -479,22 +581,27 @@
   object-fit: cover;
   margin-left: 25vw;
 }
+
 @media(max-width: 767px) {
   .authentication-login-text02 {
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .authentication-login-text03 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .authentication-login-text04 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .authentication-login-text05 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
+
   .authentication-login-text07 {
     margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);

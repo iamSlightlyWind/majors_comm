@@ -1,0 +1,508 @@
+.navloggedin-wrapper {
+  display: contents;
+}
+
+.navloggedin-navloggedin {
+  flex: 0 0 auto;
+  width: 4%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  min-width: var(--dl-size-size-medium);
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.navloggedin-logo {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  margin-top: 50%;
+  align-items: flex-start;
+  margin-bottom: 3vh;
+  flex-direction: column;
+}
+
+.navloggedin-menu {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  align-self: center;
+  margin-top: 20%;
+  flex-direction: column;
+}
+
+.navloggedin-button1 {
+  width: 75%;
+  border: none;
+  display: flex;
+  align-self: center;
+  background: none;
+  transition: 0.3s;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+  flex-direction: row;
+}
+
+.navloggedin-button1:hover {
+  background-color: #DBD3D8;
+}
+
+.navloggedin-icon10 {
+  align-self: center;
+}
+
+.navloggedin-button2 {
+  width: 75%;
+  border: none;
+  display: flex;
+  align-self: center;
+  background: none;
+  transition: 0.3s;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+  flex-direction: row;
+}
+
+.navloggedin-button2:hover {
+  background-color: #DBD3D8;
+}
+
+.navloggedin-icon12 {
+  align-self: center;
+}
+
+.navloggedin-button3 {
+  width: 75%;
+  border: none;
+  display: block;
+  align-self: center;
+  background: none;
+  transition: 0.3s;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+}
+
+.navloggedin-button3:hover {
+  background-color: #DBD3D8;
+}
+
+.navloggedin-footer {
+  width: 100%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+}
+
+.navloggedin-button4 {
+  width: 75%;
+  border: none;
+  display: flex;
+  align-self: center;
+  background: none;
+  transition: 0.3s;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+  flex-direction: row;
+}
+
+.navloggedin-button4:hover {
+  background-color: #DBD3D8;
+}
+
+.navloggedin-icon14 {
+  align-self: center;
+}
+
+.navloggedin-button5 {
+  width: 75%;
+  border: none;
+  display: flex;
+  align-self: center;
+  background: none;
+  transition: 0.3s;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+  flex-direction: row;
+}
+
+.navloggedin-button5:hover {
+  background-color: #DBD3D8;
+}
+
+.navloggedin-button6 {
+  width: 75%;
+  border: none;
+  display: flex;
+  align-self: center;
+  background: none;
+  transition: 0.3s;
+  align-items: flex-end;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.navloggedin-button6:hover {
+  background-color: #DBD3D8;
+}
+
+.navloggedin-icon18 {
+  align-self: center;
+}
+
+.profile-fragment2 {
+  display: contents;
+}
+
+.profile-text2 {
+  display: inline-block;
+  font-size: 1.5em;
+  align-self: center;
+  font-family: "Satisfy";
+}
+
+.profile-fragment1 {
+  display: contents;
+}
+
+.profile-text1 {
+  display: inline-block;
+  font-size: 1.5em;
+  align-self: center;
+  font-family: "Satisfy";
+}
+
+.edit-profile-component-wrapper {
+  display: contents;
+}
+
+.edit-profile-component-container1 {
+  width: auto;
+  height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit-profile-component-root-form {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  padding: var(--dl-space-space-oneandhalfunits);
+  flex-wrap: wrap;
+  align-self: center;
+  box-shadow: 0px 0px 3px 3px #272525;
+  align-items: center;
+  padding-top: var(--dl-space-space-unit);
+  padding-left: var(--dl-space-space-unit);
+  border-radius: 15px;
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-unit);
+  justify-content: flex-start;
+  background-color: #fffdfd;
+}
+
+.edit-profile-component-container2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.edit-profile-component-can-edit {
+  width: 50%;
+  display: flex;
+  align-self: center;
+  align-items: stretch;
+  padding-top: var(--dl-space-space-unit);
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 0px;
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-unit);
+  justify-content: space-between;
+}
+
+.edit-profile-component-image {
+  width: 15vw;
+  height: 15vw;
+  align-self: center;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 0.5vh;
+}
+
+.edit-profile-component-button1 {
+  width: 3vw;
+  align-self: center;
+  border-radius: 15px;
+  margin-bottom: 2.5vw;
+}
+
+.edit-profile-component-full-name {
+  font-size: 1.25rem;
+  align-self: flex-start;
+  font-style: normal;
+  font-family: "Nunito";
+  font-weight: 800;
+}
+
+.edit-profile-component-textinput1 {
+  width: 90%;
+  margin-top: 1vh;
+  font-family: "Nunito";
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-bottom: 5vh;
+}
+
+.edit-profile-component-date-of-birth {
+  font-size: 1.25rem;
+  align-self: flex-start;
+  font-style: normal;
+  font-family: "Nunito";
+  font-weight: 800;
+}
+
+.edit-profile-component-textinput2 {
+  width: 90%;
+  margin-top: 1vh;
+  font-family: "Nunito";
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-bottom: 3vh;
+}
+
+.edit-profile-component-button2 {
+  width: 3vw;
+  align-self: flex-end;
+  margin-right: 2vw;
+  border-radius: 15px;
+}
+
+.edit-profile-component-container3 {
+  flex: 0 0 auto;
+  width: 50%;
+  height: auto;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit-profile-component-form1 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  padding-top: var(--dl-space-space-unit);
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 0px;
+  padding-left: var(--dl-space-space-unit);
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: 5vh;
+  justify-content: center;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+}
+
+.edit-profile-component-uset-name {
+  font-size: 1.25rem;
+  align-self: flex-start;
+  font-style: normal;
+  font-family: "Nunito";
+  font-weight: 800;
+  padding-bottom: 1.5vh;
+}
+
+.edit-profile-component-textinput3 {
+  width: 90%;
+  margin-top: var(--dl-space-space-halfunit);
+  font-family: "Nunito";
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+
+.edit-profile-component-email {
+  font-size: 1.25rem;
+  align-self: flex-start;
+  font-style: normal;
+  font-family: "Nunito";
+  font-weight: 800;
+  padding-bottom: 1.5vh;
+}
+
+.edit-profile-component-textinput4 {
+  width: 90%;
+  margin-top: var(--dl-space-space-halfunit);
+  font-family: "Nunito";
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+
+.edit-profile-component-form2 {
+  width: 100%;
+  border: 2px dashed #cc9900;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 3vh;
+  padding-left: var(--dl-space-space-unit);
+  border-radius: 10px;
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: 5vh;
+  justify-content: center;
+}
+
+.edit-profile-component-password {
+  font-size: 1.25rem;
+  align-self: flex-start;
+  font-style: normal;
+  font-family: "Nunito";
+  font-weight: 800;
+  padding-bottom: 1.5vh;
+}
+
+.edit-profile-component-textinput5 {
+  width: 90%;
+  margin-top: var(--dl-space-space-halfunit);
+  font-family: "Nunito";
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+
+.edit-profile-component-cf-password {
+  font-size: 1.25rem;
+  align-self: flex-start;
+  font-style: normal;
+  font-family: "Nunito";
+  font-weight: 800;
+  padding-bottom: 1.5vh;
+}
+
+.edit-profile-component-textinput6 {
+  width: 90%;
+  margin-top: var(--dl-space-space-halfunit);
+  font-family: "Nunito";
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+
+.edit-profile-component-button3 {
+  width: 3vw;
+  align-self: flex-end;
+  margin-right: 2vw;
+  border-radius: 15px;
+}
+
+.edit-profile-componentroot-class-name {
+  flex: 1;
+  align-self: center;
+}
+
+@media(max-width: 1600px) {
+  .edit-profile-component-root-form {
+    background-color: var(--dl-color-theme-secondary1);
+  }
+
+  .edit-profile-component-uset-name {
+    font-size: 1rem;
+    font-style: italic;
+    font-family: Merriweather;
+    font-weight: 700;
+  }
+}
+
+@media(max-width: 479px) {
+  .edit-profile-component-full-name {
+    font-size: 0.7rem;
+  }
+
+  .edit-profile-component-date-of-birth {
+    font-size: 0.7rem;
+  }
+
+  .edit-profile-component-uset-name {
+    font-size: 0.7rem;
+  }
+
+  .edit-profile-component-email {
+    font-size: 0.7rem;
+  }
+
+  .edit-profile-component-password {
+    font-size: 0.7rem;
+  }
+
+  .edit-profile-component-cf-password {
+    font-size: 0.7rem;
+  }
+}
+
+.profile-container1 {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-container2 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #f5f5f5;
+}
+
+.profile-fragment1 {
+  display: contents;
+}
+
+.profile-text1 {
+  display: inline-block;
+  font-size: 1.5em;
+  align-self: center;
+  font-family: "Satisfy";
+}
+
+.profile-fragment2 {
+  display: contents;
+}
+
+.profile-text2 {
+  display: inline-block;
+  font-size: 1.5em;
+  align-self: center;
+  font-family: "Satisfy";
+}

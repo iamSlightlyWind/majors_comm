@@ -10,8 +10,7 @@ create table users
     password nvarchar(32) not null,
     email nvarchar(100) not null,
     dateOfBirth date not null,
-    gender int not null,
-    isGoogleUser int not null default 0
+    gender int not null
 )
 
 create table blocks

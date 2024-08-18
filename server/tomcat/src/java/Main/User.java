@@ -8,7 +8,6 @@ public class User {
     public String email;
     public String dob;
     public int gender;
-    public int googleUser;
     public int relation = 0;
 
     public User() {

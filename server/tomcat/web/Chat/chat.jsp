@@ -362,7 +362,6 @@
                             </c:if>
                           </c:if>
                         </c:forEach>
-                        <div id="scrollTarget"></div>
                       </div>
                       <form class="chat-input">
                         <div class="chat-container6">
@@ -400,12 +399,6 @@
           </div>
         </div>
       </div>
-      <script>
-        window.onload = function () {
-          var element = document.getElementById("scrollTarget");
-          element.scrollIntoView();
-        };
-      </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 

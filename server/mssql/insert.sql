@@ -16,7 +16,10 @@ values
     ('wlee', 'William Lee', 'wlee456', 'wlee@example.com', '1990-12-17', '1'),
     ('dclark', 'David Clark', 'davidc789', 'dclark@example.com', '1982-09-30', '1'),
     ('jsmith', 'Jane Smith', 'janesmith', 'jsmith@example.com', '1987-08-14', '0'),
-    ('rjackson', 'Robert Jackson', 'robertj', 'rjackson@example.com', '1994-04-08', '1');
+    ('rjackson', 'Robert Jackson', 'robertj', 'rjackson@example.com', '1994-04-08', '1'),
+    ('jsmith', 'James Smith', 'jamespwd', 'jsmith@example.com', '1991-02-14', '1'),
+    ('lgarcia', 'Laura Garcia', 'laurapwd', 'lgarcia@example.com', '1986-12-30', '0'),
+    ('mmartin', 'Michael Martin', 'michaelpwd', 'mmartin@example.com', '1994-09-10', '1');
 
 exec setFriend '1', '2'
 exec setFriend '1', '3'
@@ -27,6 +30,49 @@ exec setFriend '1', '7'
 exec setFriend '1', '8'
 exec setFriend '1', '9'
 exec setFriend '1', '10'
+exec setFriend '1', '11'
+exec setFriend '1', '12'
+exec setFriend '1', '13'
+
+---
+exec sendMessage '1', '4', 'text', 'Good morning, Ms. Johnson. How are you today?', @result output;
+exec sendMessage '4', '1', 'text', 'Good morning, Mr. Doe. I’m doing well, thank you. How about yourself?', @result output;
+exec sendMessage '1', '4', 'text', 'I’m doing well, thank you. Looking forward to our meeting later.', @result output;
+
+exec sendMessage '1', '5', 'text', 'Tom, did you catch the game last night?', @result output;
+exec sendMessage '5', '1', 'text', 'Hey John, yeah I did! What a finish, right?', @result output;
+exec sendMessage '1', '5', 'text', 'Absolutely, couldn’t believe that last-minute goal!', @result output;
+
+exec sendMessage '1', '6', 'text', 'Mary, do you have any updates on the client meeting?', @result output;
+exec sendMessage '6', '1', 'text', 'Yes, John. The meeting went well, and I’ll send you the summary today.', @result output;
+exec sendMessage '1', '6', 'text', 'Great, looking forward to it. Thanks, Mary!', @result output;
+
+exec sendMessage '1', '7', 'text', 'Hey William, could you review the document I sent yesterday?', @result output;
+exec sendMessage '7', '1', 'text', 'Sure thing, John. I’ll check it out and let you know if I spot anything.', @result output;
+
+exec sendMessage '1', '8', 'text', 'David, I wanted to discuss the upcoming project timeline.', @result output;
+exec sendMessage '8', '1', 'text', 'Absolutely, John. Let’s schedule a meeting to go over the details.', @result output;
+exec sendMessage '1', '8', 'text', 'Sounds good, I’ll send over some available times.', @result output;
+exec sendMessage '8', '1', 'text', 'Looking forward to it.', @result output;
+
+exec sendMessage '1', '9', 'text', 'Hey Jane, thanks for your hard work on the recent project.', @result output;
+exec sendMessage '9', '1', 'text', 'Thanks, John! It was a tough one, but I’m glad we pulled it off.', @result output;
+exec sendMessage '1', '9', 'text', 'Couldn’t have done it without you.', @result output;
+
+exec sendMessage '1', '10', 'text', 'Robert, I need your input on the financial report.', @result output;
+exec sendMessage '10', '1', 'text', 'Sure thing, John. I’ll review it and provide my comments soon.', @result output;
+exec sendMessage '1', '10', 'text', 'Thanks, Robert. Let me know if anything stands out.', @result output;
+
+exec sendMessage '1', '11', 'text', 'Hi James, could you update me on the project status?', @result output;
+exec sendMessage '11', '1', 'text', 'Hi John, I’m finalizing the report and will send it to you by this afternoon.', @result output;
+
+exec sendMessage '1', '12', 'text', 'Laura, how was your weekend?', @result output;
+exec sendMessage '12', '1', 'text', 'Hi John! It was great, thanks for asking. How about yours?', @result output;
+exec sendMessage '1', '12', 'text', 'It was good, just catching up on some work.', @result output;
+
+exec sendMessage '1', '13', 'text', 'Michael, do you have the final figures for the budget review?', @result output;
+exec sendMessage '13', '1', 'text', 'Hey John, I’m working on them now and should have them ready by tomorrow.', @result output;
+exec sendMessage '1', '13', 'text', 'Great, I’ll wait for your update.', @result output;
 
 ----
 exec sendMessage '1', '2', 'text', 'Hey Alice, how was your day?', @result output
@@ -84,31 +130,3 @@ exec sendMessage '3', '1', 'text', 'I appreciate your prompt response, Mr. Doe. 
 
 exec sendMessage '1', '3', 'text', 'Thank you, Mr. White. I look forward to our continued collaboration.', @result output
 exec sendMessage '1', '3', 'text', 'Have a great day ahead.', @result output
----
-exec sendMessage '1', '4', 'text', 'Good morning, Ms. Johnson. How are you today?', @result output;
-exec sendMessage '4', '1', 'text', 'Good morning, Mr. Doe. I’m doing well, thank you. How about yourself?', @result output;
-exec sendMessage '1', '4', 'text', 'I’m doing well, thank you. Looking forward to our meeting later.', @result output;
-
-exec sendMessage '1', '5', 'text', 'Tom, did you catch the game last night?', @result output;
-exec sendMessage '5', '1', 'text', 'Hey John, yeah I did! What a finish, right?', @result output;
-exec sendMessage '1', '5', 'text', 'Absolutely, couldn’t believe that last-minute goal!', @result output;
-
-exec sendMessage '1', '6', 'text', 'Mary, do you have any updates on the client meeting?', @result output;
-exec sendMessage '6', '1', 'text', 'Yes, John. The meeting went well, and I’ll send you the summary today.', @result output;
-exec sendMessage '1', '6', 'text', 'Great, looking forward to it. Thanks, Mary!', @result output;
-
-exec sendMessage '1', '7', 'text', 'Hey William, could you review the document I sent yesterday?', @result output;
-exec sendMessage '7', '1', 'text', 'Sure thing, John. I’ll check it out and let you know if I spot anything.', @result output;
-
-exec sendMessage '1', '8', 'text', 'David, I wanted to discuss the upcoming project timeline.', @result output;
-exec sendMessage '8', '1', 'text', 'Absolutely, John. Let’s schedule a meeting to go over the details.', @result output;
-exec sendMessage '1', '8', 'text', 'Sounds good, I’ll send over some available times.', @result output;
-exec sendMessage '8', '1', 'text', 'Looking forward to it.', @result output;
-
-exec sendMessage '1', '9', 'text', 'Hey Jane, thanks for your hard work on the recent project.', @result output;
-exec sendMessage '9', '1', 'text', 'Thanks, John! It was a tough one, but I’m glad we pulled it off.', @result output;
-exec sendMessage '1', '9', 'text', 'Couldn’t have done it without you.', @result output;
-
-exec sendMessage '1', '10', 'text', 'Robert, I need your input on the financial report.', @result output;
-exec sendMessage '10', '1', 'text', 'Sure thing, John. I’ll review it and provide my comments soon.', @result output;
-exec sendMessage '1', '10', 'text', 'Thanks, Robert. Let me know if anything stands out.', @result output;

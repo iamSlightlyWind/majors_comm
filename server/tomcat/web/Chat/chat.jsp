@@ -373,8 +373,9 @@
                             </path>
                           </svg>
                         </button>
-                        <input type="text" placeholder="Chat" class="chat-textinput input" />
-                        <button type="button" class="chat-button3 button">
+                        <input type="hidden" name="theirID" value="${theirID}" />
+                        <input type="text" name="message" placeholder="Chat" class="chat-textinput input" />
+                        <button type="submit" name="action" value="send" class="chat-button3 button">
                           <svg viewBox="0 0 1025.1702857142857 1024" class="chat-icon5">
                             <path
                               d="M1008 6.286c12 8.571 17.714 22.286 15.429 36.571l-146.286 877.714c-1.714 10.857-8.571 20-18.286 25.714-5.143 2.857-11.429 4.571-17.714 4.571-4.571 0-9.143-1.143-13.714-2.857l-258.857-105.714-138.286 168.571c-6.857 8.571-17.143 13.143-28 13.143-4 0-8.571-0.571-12.571-2.286-14.286-5.143-24-18.857-24-34.286v-199.429l493.714-605.143-610.857 528.571-225.714-92.571c-13.143-5.143-21.714-17.143-22.857-31.429-0.571-13.714 6.286-26.857 18.286-33.714l950.857-548.571c5.714-3.429 12-5.143 18.286-5.143 7.429 0 14.857 2.286 20.571 6.286z">

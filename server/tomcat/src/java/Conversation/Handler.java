@@ -17,12 +17,25 @@ public class Handler extends HttpServlet {
         String id = request.getParameter("uid") == null ? "" : request.getParameter("uid");
 
         switch (action) {
+            case "send":
+                sendMessage(request, response);
+                break;
             default:
                 if (!id.equals(""))
                     loadMessages(request, response, id);
                 viewAll(request, response);
                 break;
         }
+    }
+
+    protected void sendMessage(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        String message = request.getParameter("message");
+
+        Database.sendTextMessage(current.id, theirID, message);
+        response.sendRedirect("/chat?uid=" + theirID);
     }
 
     protected void loadMessages(HttpServletRequest request, HttpServletResponse response, String theirID)
@@ -32,6 +45,7 @@ public class Handler extends HttpServlet {
         ArrayList<Message> messages = Format.formatMessages(Database.getMessages(current.id, id));
 
         request.setAttribute("theirName", Database.getUser(id).fullname);
+        request.setAttribute("theirID", id);
         request.setAttribute("messages", messages);
     }
 

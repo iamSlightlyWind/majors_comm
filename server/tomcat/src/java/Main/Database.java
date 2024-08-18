@@ -197,6 +197,24 @@ public class Database {
         return null;
     }
 
+    public static ArrayList<User> getUserList() {
+
+        try {
+            var statement = connection.prepareCall("{call getUserList(?)}");
+            statement.setInt(1, 0);
+            var result = statement.executeQuery();
+            ArrayList<User> users = new ArrayList<>();
+            while (result.next()) {
+                users.add(getUser(result.getInt(1)));
+            }
+            return users;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
     public static ArrayList<User> getFriendList(User current) {
         int userID = current.id;
 

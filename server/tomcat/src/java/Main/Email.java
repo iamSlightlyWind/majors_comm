@@ -5,7 +5,7 @@ import jakarta.mail.internet.*;
 import java.util.Properties;
 
 public class Email {
-    private final String username = System.getenv("EMAIL_ADDRESS");
+    private final String username = System.getenv("EMAIL");
     private final String password = System.getenv("EMAIL_PASSWORD");
 
     public boolean checkLocal() {

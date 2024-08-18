@@ -40,15 +40,33 @@ public class Handler extends HttpServlet {
 
     public void recovery(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Recovery");
         String login = request.getParameter("login");
-        ArrayList<User> users = Database.getActiveAccounts();
+
+        if (login == null) {
+            request.setAttribute("status", "0");
+            request.getRequestDispatcher("/Auth/recovery.jsp").forward(request, response);
+            return;
+        }
+
+        ArrayList<User> users = Database.getUserList();
+        User found = null;
         for (User user : users) {
             if (user.email.equals(login) || user.username.equals(login)) {
-                Database.generatePassword(user.id);
-                Email email = new Email();
-                email.sendRecoveryPassword(user.email, Database.getBackupPassword(user.id));
+                found = user;
+                break;
             }
         }
+        if (found == null) {
+            request.setAttribute("status", "-1");
+            request.getRequestDispatcher("/Auth/recovery.jsp").forward(request, response);
+            return;
+        }
+        Database.generatePassword(found.id);
+        Email email = new Email();
+        email.sendRecoveryPassword(found.email, Database.getBackupPassword(found.id));
+        request.setAttribute("error", "Recovery password sent to your email");
+        request.getRequestDispatcher("/Auth/Login.jsp").forward(request, response);
     }
 
     protected void addInfo(HttpServletRequest request, HttpServletResponse response)

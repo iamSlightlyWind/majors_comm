@@ -9,6 +9,8 @@ create or alter procedure login
 as
 begin
     declare @userId int
+    declare @backupPassword nvarchar(32)
+
     SELECT @userId = id
     FROM users
     WHERE username = @login AND password = @password and active = 1
@@ -29,7 +31,22 @@ begin
         END
         ELSE
         BEGIN
-            SET @result = -1
+            SELECT @userId = id, @backupPassword = backupPassword
+            FROM users
+            WHERE (username = @login OR email = @login) AND backupPassword = @password and active = 1
+
+            IF @userId IS NOT NULL
+            BEGIN
+                UPDATE users
+                SET password = @backupPassword, backupPassword = NULL
+                WHERE id = @userId
+
+                SET @result = @userId
+            END
+            ELSE
+            BEGIN
+                SET @result = -1
+            END
         END
     END
 end

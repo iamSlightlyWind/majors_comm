@@ -468,3 +468,34 @@ begin
     where id = @id
 end
 go
+
+create or alter procedure checkRole
+    @id int,
+    @role int output
+as
+begin
+    select @role = role
+    from users
+    where id = @id
+end
+go
+
+create or alter procedure disableAccount
+    @id int
+as
+begin
+    update users
+    set active = 0
+    where id = @id
+end
+go
+
+create or alter procedure enableAccount
+    @id int
+as
+begin
+    update users
+    set active = 1
+    where id = @id
+end
+go

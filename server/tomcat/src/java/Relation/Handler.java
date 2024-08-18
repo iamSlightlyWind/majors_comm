@@ -32,6 +32,8 @@ public class Handler extends HttpServlet {
             action = "";
         }
 
+        String search = "";
+
         switch (action) {
             case "add":
                 add(request, response);
@@ -57,6 +59,10 @@ public class Handler extends HttpServlet {
                 denyRequest(request, response);
                 viewAll(request, response);
                 break;
+            case "searchRequest":
+            case "searchBlock":
+            case "searchUser":
+            case "searchFriend":
             default:
                 viewAll(request, response);
                 break;
@@ -164,6 +170,49 @@ public class Handler extends HttpServlet {
             if (!friend.contains(user) && !blocked.contains(user)) {
                 requests.add(user);
             }
+        }
+
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "searchRequest":
+                action = request.getParameter("requestSearch");
+                for (int i = 0; i < requests.size(); i++) {
+                    if (!requests.get(i).fullname.toLowerCase().contains(action.toLowerCase())) {
+                        requests.remove(i);
+                        i--;
+                    }
+                }
+                break;
+            case "searchBlock":
+                action = request.getParameter("blockSearch");
+                for (int i = 0; i < blocked.size(); i++) {
+                    if (!blocked.get(i).fullname.toLowerCase().contains(action.toLowerCase())) {
+                        blocked.remove(i);
+                        i--;
+                    }
+                }
+                break;
+            case "searchUser":
+                action = request.getParameter("userSearch");
+                for (int i = 0; i < users.size(); i++) {
+                    if (!users.get(i).fullname.toLowerCase().contains(action.toLowerCase())) {
+                        users.remove(i);
+                        i--;
+                    }
+                }
+                break;
+            case "searchFriend":
+                action = request.getParameter("friendSearch");
+                for (int i = 0; i < friend.size(); i++) {
+                    if (!friend.get(i).fullname.toLowerCase().contains(action.toLowerCase())) {
+                        friend.remove(i);
+                        i--;
+                    }
+                }
+                break;
         }
 
         request.setAttribute("friends", friend);

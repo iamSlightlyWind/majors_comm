@@ -398,4 +398,37 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public static int checkRole(int id) {
+        try {
+            var statement = connection.prepareCall("{call checkRole(?, ?)}");
+            statement.setInt(1, id);
+            statement.registerOutParameter(2, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public static void disableAccount(int id) {
+        try {
+            var statement = connection.prepareCall("{call disableAccount(?)}");
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void enableAccount(int id) {
+        try {
+            var statement = connection.prepareCall("{call enableAccount(?)}");
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

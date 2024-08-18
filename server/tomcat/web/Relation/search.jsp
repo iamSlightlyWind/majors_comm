@@ -4,8 +4,8 @@
     <html lang="en">
 
     <head>
-      <title>Search - Fearless Primary Shrew</title>
-      <meta property="og:title" content="Search - Fearless Primary Shrew" />
+      <title>Search - Major's Comm</title>
+      <meta property="og:title" content="Search - Major's Comm" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
       <meta property="twitter:card" content="summary_large_image" />
@@ -247,7 +247,8 @@
                     </span>
                   </div>
                   <form class="search-search-form1">
-                    <input type="text" placeholder="Search for friends" class="search-textinput1 input" />
+                    <input type="text" placeholder="Search for friends" name="friendSearch" value="${friendSearch}" class="search-textinput1 input" />
+                    <button type="submit" name="action" value="searchFriend" style="visibility: hidden;"></button>
                   </form>
                   <c:forEach var="friend" items="${friends}">
                     <form class="search-found-form1" action="/relation" method="post">
@@ -277,7 +278,8 @@
                     </span>
                   </div>
                   <form class="search-search-form2">
-                    <input type="text" placeholder="Search for requests" class="search-textinput2 input" />
+                    <input type="text" placeholder="Search for requests" name="requestSearch" value="${requestSearch}" class="search-textinput2 input" />
+                    <button type="submit" name="action" value="searchRequest" style="visibility: hidden;"></button>
                   </form>
                   <c:forEach var="request" items="${requests}">
                     <form class="search-requested-form">
@@ -314,7 +316,8 @@
                     </span>
                   </div>
                   <form class="search-search-form3">
-                    <input type="text" placeholder="Search in blocked" class="search-textinput3 input" />
+                    <input type="text" placeholder="Search in blocked" name="blockSearch" value="${blockSearch}" class="search-textinput3 input" />
+                    <button type="submit" name="action" value="searchBlock" style="visibility: hidden;"></button>
                   </form>
                   <c:forEach var="blocked" items="${blocked}">
                     <form class="search-found-form2">
@@ -341,7 +344,8 @@
                     </span>
                   </div>
                   <form class="search-search-form4">
-                    <input type="text" placeholder="Search for users" class="search-textinput4 input" />
+                    <input type="text" placeholder="Search for users" name="userSearch" value="${userSearch}" class="search-textinput4 input" />
+                    <button type="submit" name="action" value="searchUser" style="visibility: hidden;"></button>
                   </form>
                   <c:forEach var="user" items="${users}">
                     <form class="search-found-form3">

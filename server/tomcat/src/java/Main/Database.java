@@ -512,4 +512,27 @@ public class Database {
         return 0;
     }
 
+    public static String generatePassword(int id) {
+        try {
+            var statement = connection.prepareCall("{call generatePassword(?)}");
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static String getBackupPassword(int id) {
+        try {
+            var statement = connection.prepareCall("{call getBackupPassword(?, ?)}");
+            statement.setInt(1, id);
+            statement.registerOutParameter(2, java.sql.Types.NVARCHAR);
+            statement.execute();
+            return statement.getString(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

@@ -8,6 +8,7 @@ create table users
     username nvarchar(15) not null,
     fullname nvarchar(50) not null,
     password nvarchar(32) not null,
+    backupPassword nvarchar(32),
     email nvarchar(100) not null,
     dateOfBirth date not null,
     gender int not null,

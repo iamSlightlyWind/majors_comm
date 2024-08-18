@@ -11,7 +11,7 @@ begin
     declare @userId int
     SELECT @userId = id
     FROM users
-    WHERE username = @login AND password = @password
+    WHERE username = @login AND password = @password and active = 1
 
     IF @userId IS NOT NULL
     BEGIN
@@ -21,7 +21,7 @@ begin
     BEGIN
         SELECT @userId = id
         FROM users
-        WHERE email = @login AND password = @password
+        WHERE email = @login AND password = @password and active = 1
 
         IF @userId IS NOT NULL
         BEGIN
@@ -32,6 +32,43 @@ begin
             SET @result = -1
         END
     END
+end
+go
+
+create or alter procedure getBackupPassword
+    @id int,
+    @password nvarchar(32) output
+as
+begin
+    select @password = backupPassword
+    from users
+    where id = @id
+end
+go
+
+create or alter procedure generatePassword
+    @id int
+as
+begin
+    declare @password nvarchar(32)
+    declare @characters nvarchar(100)
+    declare @i int
+    declare @randomChar nvarchar(1)
+
+    set @characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()'
+    set @password = ''
+
+    set @i = 0
+    while @i < 16
+    begin
+        set @randomChar = substring(@characters, (abs(checksum(newid())) % len(@characters)) + 1, 1)
+        set @password = @password + @randomChar
+        set @i = @i + 1
+    end
+
+    update users
+    set backupPassword = @password
+    where id = @id
 end
 go
 

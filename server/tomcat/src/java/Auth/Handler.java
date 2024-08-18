@@ -1,8 +1,10 @@
 package Auth;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Main.Database;
+import Main.Email;
 import Main.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -38,17 +40,15 @@ public class Handler extends HttpServlet {
 
     public void recovery(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String username = request.getParameter("username");
-
-        User current = new User(username, email);
-        if (Database.userExist(current) != 1) {
-            sendError(request, response, "Invalid email or username", "/Auth/Recovery.jsp");
-            return;
+        String login = request.getParameter("login");
+        ArrayList<User> users = Database.getActiveAccounts();
+        for (User user : users) {
+            if (user.email.equals(login) || user.username.equals(login)) {
+                Database.generatePassword(user.id);
+                Email email = new Email();
+                email.sendRecoveryPassword(user.email, Database.getBackupPassword(user.id));
+            }
         }
-
-        request.getSession().setAttribute("recoveryUser", current);
-        request.getRequestDispatcher("Auth/Recovery.jsp").forward(request, response);
     }
 
     protected void addInfo(HttpServletRequest request, HttpServletResponse response)

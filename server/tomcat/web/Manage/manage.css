@@ -325,6 +325,8 @@
   height: 7.5vh;
   align-self: center;
   margin-right: 1vh;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .manage-text17 {
@@ -424,6 +426,8 @@
 .manage-image2 {
   height: 7.5vh;
   margin-right: 1vh;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .manage-text21 {

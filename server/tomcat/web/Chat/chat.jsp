@@ -264,98 +264,97 @@
                   </div>
                   <div class="chat-chat-input">
                     <div class="chat-chats">
-                      <div class="chat-their-message-first">
-                        <span class="chat-text21">
-                          <span>This is their first message</span>
-                          <br />
-                        </span>
-                      </div>
-                      <div class="chat-their-image">
-                        <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                          class="chat-image2" />
-                      </div>
-                      <div class="chat-their-message-middle">
-                        <span class="chat-text24">
-                          This is one of their middle messages
-                        </span>
-                      </div>
-                      <div class="chat-their-message-last">
-                        <span class="chat-text25">
-                          This is their last message
-                        </span>
-                      </div>
-                      <div class="chat-our-message-first-with-delete">
-                        <div class="chat-our-message-first">
-                          <span class="chat-text26">
-                            <span>This is our first message</span>
-                            <br />
-                          </span>
-                        </div>
-                        <delete-button-wrapper class="delete-button-delete-button-wrapper">
-                          <div class="delete-button-container delete-button-root-class-name">
-                            <button type="button" class="delete-button-button button">
-                              <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
-                                <path
-                                  d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
-                                </path>
-                              </svg>
-                            </button>
-                          </div>
-                        </delete-button-wrapper>
-                      </div>
-                      <div class="chat-our-image-with-delete">
-                        <div class="chat-our-image">
-                          <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                            class="chat-image3" />
-                        </div>
-                        <delete-button-wrapper-wjec class="delete-button-delete-button-wrapper-wjec">
-                          <div class="delete-button-container delete-button-root-class-name1">
-                            <button type="button" class="delete-button-button button">
-                              <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
-                                <path
-                                  d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
-                                </path>
-                              </svg>
-                            </button>
-                          </div>
-                        </delete-button-wrapper-wjec>
-                      </div>
-                      <div class="chat-our-message-middle1">
-                        <div class="chat-our-message-middle2">
-                          <span class="chat-text29">
-                            This is one of our middle messages
-                          </span>
-                        </div>
-                        <delete-button-wrapper-iidu class="delete-button-delete-button-wrapper-iidu">
-                          <div class="delete-button-container delete-button-root-class-name2">
-                            <button type="button" class="delete-button-button button">
-                              <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
-                                <path
-                                  d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
-                                </path>
-                              </svg>
-                            </button>
-                          </div>
-                        </delete-button-wrapper-iidu>
-                      </div>
-                      <div class="chat-our-message-last1">
-                        <div class="chat-our-message-last2">
-                          <span class="chat-text30">
-                            This is our last message
-                          </span>
-                        </div>
-                        <delete-button-wrapper-mqwu class="delete-button-delete-button-wrapper-mqwu">
-                          <div class="delete-button-container delete-button-root-class-name3">
-                            <button type="button" class="delete-button-button button">
-                              <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
-                                <path
-                                  d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
-                                </path>
-                              </svg>
-                            </button>
-                          </div>
-                        </delete-button-wrapper-mqwu>
-                      </div>
+                      <c:forEach var="message" items="${messages}">
+                        <c:if test="${message.isMine}">
+                          <c:if test="${message.location == 'first'}">
+                            <div class="chat-our-message-first-with-delete">
+                              <div class="chat-our-message-first">
+                                <span class="chat-text26">
+                                  <span>${message.content}</span>
+                                  <br />
+                                </span>
+                              </div>
+                              <delete-button-wrapper class="delete-button-delete-button-wrapper">
+                                <div class="delete-button-container delete-button-root-class-name">
+                                  <button type="button" class="delete-button-button button">
+                                    <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
+                                      <path
+                                        d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
+                                      </path>
+                                    </svg>
+                                  </button>
+                                </div>
+                              </delete-button-wrapper>
+                            </div>
+                          </c:if>
+                          <c:if test="${message.location == 'middle'}">
+                            <div class="chat-our-message-middle1">
+                              <div class="chat-our-message-middle2">
+                                <span class="chat-text29">
+                                  ${message.content}
+                                </span>
+                              </div>
+                              <delete-button-wrapper-iidu class="delete-button-delete-button-wrapper-iidu">
+                                <div class="delete-button-container delete-button-root-class-name2">
+                                  <button type="button" class="delete-button-button button">
+                                    <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
+                                      <path
+                                        d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
+                                      </path>
+                                    </svg>
+                                  </button>
+                                </div>
+                              </delete-button-wrapper-iidu>
+                            </div>
+                          </c:if>
+                          <c:if test="${message.location == 'last'}">
+                            <div class="chat-our-message-last1">
+                              <div class="chat-our-message-last2">
+                                <span class="chat-text30">
+                                  ${message.content}
+                                </span>
+                              </div>
+                              <delete-button-wrapper-mqwu class="delete-button-delete-button-wrapper-mqwu">
+                                <div class="delete-button-container delete-button-root-class-name3">
+                                  <button type="button" class="delete-button-button button">
+                                    <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
+                                      <path
+                                        d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
+                                      </path>
+                                    </svg>
+                                  </button>
+                                </div>
+                              </delete-button-wrapper-mqwu>
+                            </div>
+                          </c:if>
+                        </c:if>
+                        <c:if test="${!message.isMine}">
+                          <c:if test="${message.location == 'first'}">
+                            <div class="chat-their-message-first">
+                              <span class="chat-text21">
+                                <span>${message.content}</span>
+                                <br />
+                              </span>
+                            </div>
+                          </c:if>
+
+                          <c:if test="${message.location == 'middle'}">
+                            <div class="chat-their-message-middle">
+                              <span class="chat-text24">
+                                ${message.content}
+                              </span>
+                            </div>
+                          </c:if>
+
+                          <c:if test="${message.location == 'last'}">
+                            <div class="chat-their-message-last">
+                              <span class="chat-text25">
+                                ${message.content}
+                              </span>
+                            </div>
+                          </c:if>
+                        </c:if>
+                      </c:forEach>
                     </div>
                     <form class="chat-input">
                       <div class="chat-container6">

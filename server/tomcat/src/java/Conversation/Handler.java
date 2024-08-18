@@ -29,7 +29,7 @@ public class Handler extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(theirID);
         User current = (User) request.getSession().getAttribute("user");
-        ArrayList<Message> messages = Database.getMessages(current.id, id);
+        ArrayList<Message> messages = Format.formatMessages(Database.getMessages(current.id, id));
 
         request.setAttribute("theirName", Database.getUser(id).fullname);
         request.setAttribute("messages", messages);

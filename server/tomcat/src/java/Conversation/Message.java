@@ -13,6 +13,10 @@ public class Message {
         this.content = content;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
     public String getContent() {
         return content;
     }
@@ -29,11 +33,7 @@ public class Message {
         return isMine + "";
     }
 
-    public String toString() {
-        if (isMine) {
-            return "Me: " + content;
-        } else {
-            return "Them: " + content;
-        }
+    public String toString(){
+        return location + " " + content;
     }
 }

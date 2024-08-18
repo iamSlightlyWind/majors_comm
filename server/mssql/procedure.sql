@@ -420,6 +420,7 @@ create or alter procedure sendMessage
     @result int output
 as
 begin
+    WAITFOR DELAY '00:00:00.010';
     if exists (select 1
         from blocks
         where blockerId = @sender and blockedId = @receiver)

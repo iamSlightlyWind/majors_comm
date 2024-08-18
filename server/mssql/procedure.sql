@@ -443,3 +443,14 @@ BEGIN
         m.time DESC;
 END
 go
+
+create or alter procedure deleteMessage
+    @sender int,
+    @receiver int,
+    @time datetime
+as
+begin
+    delete from messages
+    where senderId = @sender and receiverId = @receiver and time = @time
+end
+go

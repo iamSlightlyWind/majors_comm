@@ -6,11 +6,13 @@ public class Message {
     public String type;
     public String content;
     public String location;
+    public String time;
 
-    public Message(boolean isMine, int theirID, String type, String content) {
+    public Message(boolean isMine, int theirID, String type, String content, String time) {
         this.isMine = isMine;
         this.type = type;
         this.content = content;
+        this.time = time;
     }
 
     public String getLocation() {
@@ -27,6 +29,10 @@ public class Message {
 
     public String getType() {
         return type;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public String getIsMine() {

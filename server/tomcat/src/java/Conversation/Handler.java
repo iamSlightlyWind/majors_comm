@@ -17,6 +17,9 @@ public class Handler extends HttpServlet {
         String id = request.getParameter("uid") == null ? "" : request.getParameter("uid");
 
         switch (action) {
+            case "delete":
+                deleteMessage(request, response);
+                break;
             case "send":
                 sendMessage(request, response);
                 break;
@@ -28,14 +31,28 @@ public class Handler extends HttpServlet {
         }
     }
 
+    protected void deleteMessage(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("uid"));
+        String messageTime = request.getParameter("mt");
+
+        System.out.println("Deleting message from " + current.id + " to " + theirID + " at " + messageTime);
+
+        Database.deleteMessage(current.id, theirID, messageTime);
+        response.sendRedirect("/chat?uid=" + theirID);
+    }
+
     protected void sendMessage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User current = (User) request.getSession().getAttribute("user");
-        int theirID = Integer.parseInt(request.getParameter("theirID"));
+        int theirID = Integer.parseInt(request.getParameter("uid"));
         String message = request.getParameter("message");
 
-        Database.sendTextMessage(current.id, theirID, message);
-        response.sendRedirect("/chat?uid=" + theirID);
+        if (Database.sendTextMessage(current.id, theirID, message) != 1) {
+            response.sendRedirect("/chat?ce=1&uid=" + theirID);
+        } else
+            response.sendRedirect("/chat?uid=" + theirID);
     }
 
     protected void loadMessages(HttpServletRequest request, HttpServletResponse response, String theirID)
@@ -53,6 +70,7 @@ public class Handler extends HttpServlet {
             throws ServletException, IOException {
         User current = (User) request.getSession().getAttribute("user");
         ArrayList<Preview> previews = Database.getPreview(current.id);
+        request.setAttribute("ce", request.getParameter("ce"));
 
         request.setAttribute("previews", previews);
         request.getRequestDispatcher("/Chat/chat.jsp").forward(request, response);

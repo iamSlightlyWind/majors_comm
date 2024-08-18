@@ -314,7 +314,7 @@ public class Database {
             ArrayList<Message> messages = new ArrayList<>();
             while (result.next()) {
                 messages.add(new Message(result.getInt(1) == user1, result.getInt(2), result.getString(3),
-                        result.getString(4)));
+                        result.getString(4), result.getString(5)));
             }
             return messages;
         } catch (SQLException ex) {
@@ -333,12 +333,26 @@ public class Database {
                 previews.add(new Preview(result.getInt(1) == userID ? result.getInt(2) : result.getInt(1),
                         getUser(result.getInt(1) == userID ? result.getInt(2) : result.getInt(1)).fullname,
                         new Message(result.getInt(1) == userID, result.getInt(2), result.getString(3),
-                                result.getString(4))));
+                                result.getString(4), result.getString(5))));
             }
             return previews;
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public static boolean deleteMessage(int sender, int receiver, String time) {
+        try {
+            var statement = connection.prepareCall("{call deleteMessage(?, ?, ?)}");
+            statement.setInt(1, sender);
+            statement.setInt(2, receiver);
+            statement.setString(3, time);
+            statement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

@@ -32,8 +32,6 @@ public class Handler extends HttpServlet {
             action = "";
         }
 
-        String search = "";
-
         switch (action) {
             case "add":
                 add(request, response);

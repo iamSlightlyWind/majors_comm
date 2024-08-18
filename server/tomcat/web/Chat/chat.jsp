@@ -272,11 +272,12 @@
                             <c:if test="${message.type == 'image'}">
                               <div class="chat-our-image-with-delete">
                                 <div class="chat-our-image">
-                                  <img src="/upload/images/${message.link}" class="chat-image3"/>
+                                  <img src="/upload/images/${message.link}" class="chat-image3" />
                                 </div>
                                 <delete-button-wrapper-wjec class="delete-button-delete-button-wrapper-wjec">
                                   <div class="delete-button-container delete-button-root-class-name1">
-                                    <button type="button" class="delete-button-button button">
+                                    <button type="button" class="delete-button-button button"
+                                      onclick="window.location.href='/chat?uid=${theirID}&action=delete&mt=${message.time}'">
                                       <svg viewBox="0 0 1024 1024" class="delete-button-icon1">
                                         <path
                                           d="M810 170v86h-596v-86h148l44-42h212l44 42h148zM256 810v-512h512v512q0 34-26 60t-60 26h-340q-34 0-60-26t-26-60z">
@@ -464,87 +465,47 @@
 
         const uid = getQueryParam('uid');
 
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.name = 'file';
-        fileInput.style.display = 'none';
-        document.body.appendChild(fileInput);
+        function setupFileUpload(buttonId, actionValue) {
+          const fileInput = document.createElement('input');
+          fileInput.type = 'file';
+          fileInput.name = 'file';
+          fileInput.style.display = 'none';
+          document.body.appendChild(fileInput);
 
-        document.getElementById('uploadImageButton').addEventListener('click', function () {
-          fileInput.click();
-        });
+          document.getElementById(buttonId).addEventListener('click', function () {
+            fileInput.click();
+          });
 
-        fileInput.addEventListener('change', function () {
-          if (this.files.length > 0) {
-            const form = document.createElement('form');
-            form.action = '/upload';
-            form.method = 'post';
-            form.enctype = 'multipart/form-data';
-            form.style.display = 'none';
+          fileInput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+              const form = document.createElement('form');
+              form.action = '/upload';
+              form.method = 'post';
+              form.enctype = 'multipart/form-data';
+              form.style.display = 'none';
 
-            const actionInput = document.createElement('input');
-            actionInput.type = 'hidden';
-            actionInput.name = 'action';
-            actionInput.value = 'uploadImage';
+              const actionInput = document.createElement('input');
+              actionInput.type = 'hidden';
+              actionInput.name = 'action';
+              actionInput.value = actionValue;
 
-            const uidInput = document.createElement('input');
-            uidInput.type = 'hidden';
-            uidInput.name = 'uid';
-            uidInput.value = uid;
+              const uidInput = document.createElement('input');
+              uidInput.type = 'hidden';
+              uidInput.name = 'uid';
+              uidInput.value = uid;
 
-            form.appendChild(fileInput);
-            form.appendChild(actionInput);
-            form.appendChild(uidInput);
+              form.appendChild(fileInput);
+              form.appendChild(actionInput);
+              form.appendChild(uidInput);
 
-            document.body.appendChild(form);
-            form.submit();
-          }
-        });
-      </script>
-      <script>
-        function getQueryParam(name) {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(name);
+              document.body.appendChild(form);
+              form.submit();
+            }
+          });
         }
 
-        const uid = getQueryParam('uid');
-
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.name = 'file';
-        fileInput.style.display = 'none';
-        document.body.appendChild(fileInput);
-
-        document.getElementById('uploadFileButton').addEventListener('click', function () {
-          fileInput.click();
-        });
-
-        fileInput.addEventListener('change', function () {
-          if (this.files.length > 0) {
-            const form = document.createElement('form');
-            form.action = '/upload';
-            form.method = 'post';
-            form.enctype = 'multipart/form-data';
-            form.style.display = 'none';
-
-            const actionInput = document.createElement('input');
-            actionInput.type = 'hidden';
-            actionInput.name = 'action';
-            actionInput.value = 'uploadFile';
-
-            const uidInput = document.createElement('input');
-            uidInput.type = 'hidden';
-            uidInput.name = 'uid';
-            uidInput.value = uid;
-
-            form.appendChild(fileInput);
-            form.appendChild(actionInput);
-            form.appendChild(uidInput);
-
-            document.body.appendChild(form);
-            form.submit();
-          }
-        });
+        setupFileUpload('uploadImageButton', 'uploadImage');
+        setupFileUpload('uploadFileButton', 'uploadFile');
       </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>

@@ -36,8 +36,6 @@ public class Upload extends HttpServlet {
                 downloadFile(request, response);
                 break;
         }
-
-        printTempDirectory(request);
     }
 
     protected void downloadFile(HttpServletRequest request, HttpServletResponse response)
@@ -136,15 +134,6 @@ public class Upload extends HttpServlet {
             try (InputStream fileContent = filePart.getInputStream()) {
                 Files.copy(fileContent, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
             }
-        }
-    }
-
-    protected void printTempDirectory(HttpServletRequest request) {
-        File tempDir = (File) request.getServletContext().getAttribute("javax.servlet.context.tempdir");
-        if (tempDir != null) {
-            System.out.println("Temporary Directory: " + tempDir.getAbsolutePath());
-        } else {
-            System.out.println("Temporary Directory attribute is not set.");
         }
     }
 

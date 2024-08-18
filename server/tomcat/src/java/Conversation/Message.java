@@ -7,17 +7,22 @@ public class Message {
     public String content;
     public String location;
     public String time;
+    public String link;
 
     public Message(boolean isMine, int theirID, String type, String content, String time) {
         this.isMine = isMine;
         this.type = type;
         this.content = content;
         this.time = time;
+
+        if (type.equals("file")) {
+            this.link = content;
+            this.content = content.split("/")[1];
+        }
     }
 
-    public Message(String type, String content){
-        this.type = type;
-        this.content = content;
+    public String getLink() {
+        return link;
     }
 
     public String getLocation() {
@@ -44,7 +49,7 @@ public class Message {
         return isMine + "";
     }
 
-    public String toString(){
+    public String toString() {
         return location + " " + content;
     }
 }

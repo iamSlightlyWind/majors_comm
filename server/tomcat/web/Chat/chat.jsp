@@ -273,7 +273,8 @@
                               <div class="chat-our-message-first-with-delete">
                                 <div class="chat-our-message-first">
                                   <span class="chat-text26">
-                                    <span>${message.content}</span>
+                                    <span><a
+                                        href="/upload?action=download&file=${message.link}">${message.content}</a></span>
                                     <br />
                                   </span>
                                 </div>
@@ -295,7 +296,7 @@
                               <div class="chat-our-message-middle1">
                                 <div class="chat-our-message-middle2">
                                   <span class="chat-text29">
-                                    ${message.content}
+                                    <a href="/upload?action=download&file=${message.link}">${message.content}</a>
                                   </span>
                                 </div>
                                 <delete-button-wrapper-iidu class="delete-button-delete-button-wrapper-iidu">
@@ -316,7 +317,7 @@
                               <div class="chat-our-message-last1">
                                 <div class="chat-our-message-last2">
                                   <span class="chat-text30">
-                                    ${message.content}
+                                    <a href="/upload?action=download&file=${message.link}">${message.content}</a>
                                   </span>
                                 </div>
                                 <delete-button-wrapper-mqwu class="delete-button-delete-button-wrapper-mqwu">
@@ -338,7 +339,8 @@
                             <c:if test="${message.location == 'first'}">
                               <div class="chat-their-message-first">
                                 <span class="chat-text21">
-                                  <span>${message.content}</span>
+                                  <span><a
+                                      href="/upload?action=download&file=${message.link}">${message.content}</a></span>
                                   <br />
                                 </span>
                               </div>
@@ -347,7 +349,7 @@
                             <c:if test="${message.location == 'middle'}">
                               <div class="chat-their-message-middle">
                                 <span class="chat-text24">
-                                  ${message.content}
+                                  <a href="/upload?action=download&file=${message.link}">${message.content}</a>
                                 </span>
                               </div>
                             </c:if>
@@ -355,7 +357,7 @@
                             <c:if test="${message.location == 'last'}">
                               <div class="chat-their-message-last">
                                 <span class="chat-text25">
-                                  ${message.content}
+                                  <a href="/upload?action=download&file=${message.link}">${message.content}</a>
                                 </span>
                               </div>
                             </c:if>

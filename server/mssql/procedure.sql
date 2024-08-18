@@ -480,7 +480,7 @@ begin
 end
 go
 
-create or alter procedure disableAccount
+create or alter procedure deactivateAccount
     @id int
 as
 begin
@@ -490,12 +490,30 @@ begin
 end
 go
 
-create or alter procedure enableAccount
+create or alter procedure activateAccount
     @id int
 as
 begin
     update users
     set active = 1
     where id = @id
+end
+go
+
+create or alter procedure getActiveAccounts
+as
+begin
+    select id
+    from users
+    where active = 1 and role = 0
+end
+go
+
+create or alter procedure getDeactivatedAccounts
+as
+begin
+    select id
+    from users
+    where active = 0 and role = 0
 end
 go

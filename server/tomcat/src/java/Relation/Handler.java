@@ -22,6 +22,21 @@ public class Handler extends HttpServlet {
         return true;
     }
 
+    public static boolean checkModerator(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        if (current == null) {
+            response.sendRedirect("/Auth/Login.jsp");
+            return false;
+        }
+
+        if (Database.checkRole(current.id) != 1) {
+            response.sendRedirect("/chat");
+            return false;
+        }
+        return true;
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (!Relation.Handler.checkPermission(request, response))

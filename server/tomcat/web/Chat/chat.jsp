@@ -373,10 +373,32 @@
                             </c:if>
                           </c:if>
                           <c:if test="${!message.isMine}">
-                            <c:if test="${message.location == 'first'}">
-                              <div class="chat-their-message-first">
-                                <span class="chat-text21">
-                                  <span>
+                            <c:if test="${message.type == 'image'}">
+                              <div class="chat-their-image">
+                                <img alt="image" src="/upload/images/${message.link}" class="chat-image2" />
+                              </div>
+                            </c:if>
+                            <c:if test="${message.type != 'image'}">
+                              <c:if test="${message.location == 'first'}">
+                                <div class="chat-their-message-first">
+                                  <span class="chat-text21">
+                                    <span>
+                                      <c:if test="${message.type == 'text'}">
+                                        <span>${message.content}</span>
+                                      </c:if>
+                                      <c:if test="${message.type == 'file'}">
+                                        <a href="/upload?action=download&file=${message.link}"
+                                          style="text-decoration: underline;">${message.content}</a>
+                                      </c:if>
+                                    </span>
+                                    <br />
+                                  </span>
+                                </div>
+                              </c:if>
+
+                              <c:if test="${message.location == 'middle'}">
+                                <div class="chat-their-message-middle">
+                                  <span class="chat-text24">
                                     <c:if test="${message.type == 'text'}">
                                       <span>${message.content}</span>
                                     </c:if>
@@ -385,37 +407,22 @@
                                         style="text-decoration: underline;">${message.content}</a>
                                     </c:if>
                                   </span>
-                                  <br />
-                                </span>
-                              </div>
-                            </c:if>
+                                </div>
+                              </c:if>
 
-                            <c:if test="${message.location == 'middle'}">
-                              <div class="chat-their-message-middle">
-                                <span class="chat-text24">
-                                  <c:if test="${message.type == 'text'}">
-                                    <span>${message.content}</span>
-                                  </c:if>
-                                  <c:if test="${message.type == 'file'}">
-                                    <a href="/upload?action=download&file=${message.link}"
-                                      style="text-decoration: underline;">${message.content}</a>
-                                  </c:if>
-                                </span>
-                              </div>
-                            </c:if>
-
-                            <c:if test="${message.location == 'last'}">
-                              <div class="chat-their-message-last">
-                                <span class="chat-text25">
-                                  <c:if test="${message.type == 'text'}">
-                                    <span>${message.content}</span>
-                                  </c:if>
-                                  <c:if test="${message.type == 'file'}">
-                                    <a href="/upload?action=download&file=${message.link}"
-                                      style="text-decoration: underline;">${message.content}</a>
-                                  </c:if>
-                                </span>
-                              </div>
+                              <c:if test="${message.location == 'last'}">
+                                <div class="chat-their-message-last">
+                                  <span class="chat-text25">
+                                    <c:if test="${message.type == 'text'}">
+                                      <span>${message.content}</span>
+                                    </c:if>
+                                    <c:if test="${message.type == 'file'}">
+                                      <a href="/upload?action=download&file=${message.link}"
+                                        style="text-decoration: underline;">${message.content}</a>
+                                    </c:if>
+                                  </span>
+                                </div>
+                              </c:if>
                             </c:if>
                           </c:if>
                         </c:forEach>

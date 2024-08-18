@@ -412,9 +412,9 @@ public class Database {
         return 0;
     }
 
-    public static void disableAccount(int id) {
+    public static void deactivateAccount(int id) {
         try {
-            var statement = connection.prepareCall("{call disableAccount(?)}");
+            var statement = connection.prepareCall("{call deactivateAccount(?)}");
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException ex) {
@@ -422,13 +422,43 @@ public class Database {
         }
     }
 
-    public static void enableAccount(int id) {
+    public static void activateAccount(int id) {
         try {
-            var statement = connection.prepareCall("{call enableAccount(?)}");
+            var statement = connection.prepareCall("{call activateAccount(?)}");
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static ArrayList<User> getActiveAccounts() {
+        try {
+            var statement = connection.prepareCall("{call getActiveAccounts()}");
+            var result = statement.executeQuery();
+            ArrayList<User> users = new ArrayList<>();
+            while (result.next()) {
+                users.add(getUser(result.getInt(1)));
+            }
+            return users;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static ArrayList<User> getDeactivatedAccounts() {
+        try {
+            var statement = connection.prepareCall("{call getDeactivatedAccounts()}");
+            var result = statement.executeQuery();
+            ArrayList<User> users = new ArrayList<>();
+            while (result.next()) {
+                users.add(getUser(result.getInt(1)));
+            }
+            return users;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

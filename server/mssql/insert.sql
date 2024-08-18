@@ -19,7 +19,12 @@ values
     ('rjackson', 'Robert Jackson', 'robertj', 'rjackson@example.com', '1994-04-08', '1'),
     ('jsmith', 'James Smith', 'jamespwd', 'jsmith@example.com', '1991-02-14', '1'),
     ('lgarcia', 'Laura Garcia', 'laurapwd', 'lgarcia@example.com', '1986-12-30', '0'),
-    ('mmartin', 'Michael Martin', 'michaelpwd', 'mmartin@example.com', '1994-09-10', '1');
+    ('mmartin', 'Michael Martin', 'michaelpwd', 'mmartin@example.com', '1994-09-10', '1'),
+    ('slightlywind', 'Slightly Wind', 'slightlywind', 'alternative@themajorones.dev' , '1994-09-10', '1');
+
+update users
+set role = '1'
+where username = 'slightlywind';
 
 exec setFriend '1', '2'
 exec setFriend '1', '3'

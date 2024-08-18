@@ -1,7 +1,6 @@
 package Profile;
 
 import java.io.IOException;
-
 import Main.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +12,7 @@ public class Handler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
+        System.out.println("Action: " + action);
 
         switch (action) {
             case "update":
@@ -39,11 +39,11 @@ public class Handler extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
-        if(!fullname.equals("")){
+        if (!fullname.equals("")) {
             current.fullname = fullname;
-        } 
-        
-        if(!dob.equals("")){
+        }
+
+        if (!dob.equals("")) {
             current.dob = dob;
         }
 

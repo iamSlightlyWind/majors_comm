@@ -15,6 +15,11 @@ public class Message {
         this.time = time;
     }
 
+    public Message(String type, String content){
+        this.type = type;
+        this.content = content;
+    }
+
     public String getLocation() {
         return location;
     }

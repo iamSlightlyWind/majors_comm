@@ -371,7 +371,7 @@
                               </path>
                             </svg>
                           </button>
-                          <button type="button" class="chat-button2 button">
+                          <button type="button" class="chat-button2 button" id="uploadButton">
                             <svg viewBox="0 0 1024 1024" class="chat-icon3">
                               <path
                                 d="M704 256h64v490q0 98-68 167t-166 69-167-69-69-167v-532q0-70 51-121t121-51 120 51 50 121v448q0 44-31 75t-75 31-76-31-32-75v-406h64v406q0 18 13 30t31 12 30-12 12-30v-448q0-44-31-76t-75-32-76 32-32 76v532q0 70 51 121t121 51 120-51 50-121v-490z">
@@ -398,6 +398,51 @@
           </div>
         </div>
       </div>
+      <script>
+        function getQueryParam(name) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(name);
+        }
+
+        const uid = getQueryParam('uid');
+
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.name = 'file';
+        fileInput.style.display = 'none';
+        document.body.appendChild(fileInput);
+
+        document.getElementById('uploadButton').addEventListener('click', function () {
+          fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function () {
+          if (this.files.length > 0) {
+            const form = document.createElement('form');
+            form.action = '/upload';
+            form.method = 'post';
+            form.enctype = 'multipart/form-data';
+            form.style.display = 'none';
+
+            const actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'action';
+            actionInput.value = 'uploadFile';
+
+            const uidInput = document.createElement('input');
+            uidInput.type = 'hidden';
+            uidInput.name = 'uid';
+            uidInput.value = uid;
+
+            form.appendChild(fileInput);
+            form.appendChild(actionInput);
+            form.appendChild(uidInput);
+
+            document.body.appendChild(form);
+            form.submit();
+          }
+        });
+      </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 

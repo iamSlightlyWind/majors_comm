@@ -8,6 +8,10 @@
         <servlet-name>profile</servlet-name>
         <servlet-class>Profile.Handler</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>Main.Upload</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Relation</servlet-name>
         <url-pattern>/relation</url-pattern>
@@ -19,6 +23,10 @@
     <servlet-mapping>
         <servlet-name>profile</servlet-name>
         <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>auth</welcome-file>

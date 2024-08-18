@@ -370,4 +370,32 @@ public class Database {
         }
         return false;
     }
+
+    public static void sendFileMessage(int sender, int receiver, String filename) {
+        try {
+            var statement = connection.prepareCall("{call sendMessage(?, ?, ?, ?, ?)}");
+            statement.setInt(1, sender);
+            statement.setInt(2, receiver);
+            statement.setString(3, "file");
+            statement.setString(4, filename);
+            statement.registerOutParameter(5, java.sql.Types.INTEGER);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void sendImageMessage(int sender, int receiver, String filename) {
+        try {
+            var statement = connection.prepareCall("{call sendMessage(?, ?, ?, ?, ?)}");
+            statement.setInt(1, sender);
+            statement.setInt(2, receiver);
+            statement.setString(3, "image");
+            statement.setString(4, filename);
+            statement.registerOutParameter(5, java.sql.Types.INTEGER);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

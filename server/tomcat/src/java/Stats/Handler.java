@@ -59,7 +59,8 @@ public class Handler extends HttpServlet {
             return;
         }
     
-        String applicationPath = request.getServletContext().getRealPath("") + "/upload";
+        String applicationPath = request.getServletContext().getRealPath("") + "upload";
+        System.out.println(applicationPath);
         File files = new File(applicationPath + "/file");
         File images = new File(applicationPath + "/image");
         File profilePics = new File(applicationPath + "/profile");

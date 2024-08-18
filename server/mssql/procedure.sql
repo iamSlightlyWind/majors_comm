@@ -86,8 +86,10 @@ create or alter procedure setFriend
 as
 begin
     begin
-        insert into friends (userId, friendId)
-        values (@user1, @user2)
+        insert into friends
+            (userId, friendId)
+        values
+            (@user1, @user2)
 
         delete from requests where requesterId = @user1 and requestedId = @user2
         delete from requests where requesterId = @user2 and requestedId = @user1
@@ -179,7 +181,7 @@ begin
     BEGIN
         exec removeFriend @blocker, @blocked
         exec removeFriend @blocked, @blocker
-                insert into blocks
+        insert into blocks
             (blockerId, blockedId)
         values
             (@blocker, @blocked)
@@ -347,4 +349,105 @@ begin
     -- no relation
     END
 end
+go
+
+create or alter procedure sendMessage
+    @sender int,
+    @receiver int,
+    @type varchar(10),
+    @content nvarchar(max),
+    @result int output
+as
+begin
+    if exists (select 1
+        from blocks
+        where blockerId = @sender and blockedId = @receiver)
+        or exists (select 1
+        from blocks
+        where blockerId = @receiver and blockedId = @sender)
+    begin
+        set @result = -1
+    end
+    else
+    if exists (select 1
+        from friends
+        where userId = @sender and friendId = @receiver)
+        or exists (select 1
+        from friends
+        where userId = @receiver and friendId = @sender)
+    begin
+        insert into messages
+            (senderId, receiverId, type, content, time)
+        values
+            (@sender, @receiver, @type, @content, getdate())
+        set @result = 1
+    end
+    else
+    begin
+        set @result = 0
+    end
+end
+go
+
+create or alter procedure getMessages
+    @user1 int,
+    @user2 int
+as
+begin
+    select senderId as Sender,
+        receiverId as Receiver,
+        type as Type,
+        content as Content,
+        time as Time
+    from messages
+    where (senderId = @user1 and receiverId = @user2)
+        or (senderId = @user2 and receiverId = @user1)
+    order by time asc
+end
+go
+
+/* create table messages (
+    senderId int not null,
+    receiverId int not null,
+    type varchar(10) not null,
+    content nvarchar(max) not null,
+    time datetime not null
+) */
+
+CREATE OR ALTER PROCEDURE getLastMessages
+    @requesterID INT
+AS
+BEGIN
+    SELECT
+        m.senderId,
+        m.receiverId,
+        m.type,
+        m.content,
+        m.time
+    FROM
+        messages m
+        INNER JOIN
+        (SELECT
+            CASE 
+                 WHEN senderId = @requesterID THEN receiverId 
+                 ELSE senderId 
+             END AS conversationPartner,
+            MAX(time) AS latestTime
+        FROM
+            messages
+        WHERE 
+             senderId = @requesterID OR receiverId = @requesterID
+        GROUP BY 
+             CASE 
+                 WHEN senderId = @requesterID THEN receiverId 
+                 ELSE senderId 
+             END
+        ) latestMessages
+        ON 
+        ((m.senderId = @requesterID AND m.receiverId = latestMessages.conversationPartner) OR
+         (m.receiverId = @requesterID AND m.senderId = latestMessages.conversationPartner))
+        AND m.time = latestMessages.latestTime
+    ORDER BY 
+        m.time DESC;
+END
 go

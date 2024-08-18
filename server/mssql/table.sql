@@ -31,3 +31,11 @@ create table requests
     requesterId int not null,
     requestedId int not null
 )
+
+create table messages (
+    senderId int not null,
+    receiverId int not null,
+    type varchar(10) not null,
+    content nvarchar(max) not null,
+    time datetime not null
+)

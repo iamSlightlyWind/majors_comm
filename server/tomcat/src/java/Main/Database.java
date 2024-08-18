@@ -286,4 +286,55 @@ public class Database {
         }
         return 0;
     }
+
+    public static int sendTextMessage(int sender, int receiver, String message) {
+        try {
+            var statement = connection.prepareCall("{call sendMessage(?, ?, ?, ?, ?)}");
+            statement.setInt(1, sender);
+            statement.setInt(2, receiver);
+            statement.setString(3, "text");
+            statement.setString(4, message);
+            statement.registerOutParameter(5, java.sql.Types.INTEGER);
+            statement.execute();
+            return statement.getInt(5);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public static ArrayList<Message> getMessages(int user1, int user2) {
+        try {
+            var statement = connection.prepareCall("{call getMessages(?, ?)}");
+            statement.setInt(1, user1);
+            statement.setInt(2, user2);
+            var result = statement.executeQuery();
+            ArrayList<Message> messages = new ArrayList<>();
+            while (result.next()) {
+                messages.add(new Message(result.getInt(1) == user1, result.getInt(2), result.getString(3),
+                        result.getString(4)));
+            }
+            return messages;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static ArrayList<Message> getLastMessages(int userID) {
+        try {
+            var statement = connection.prepareCall("{call getLastMessages(?)}");
+            statement.setInt(1, userID);
+            var result = statement.executeQuery();
+            ArrayList<Message> messages = new ArrayList<>();
+            while (result.next()) {
+                messages.add(new Message(result.getInt(1) == userID, result.getInt(2), result.getString(3),
+                        result.getString(4)));
+            }
+            return messages;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

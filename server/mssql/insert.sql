@@ -35,10 +35,6 @@ exec setFriend '1', '12'
 exec setFriend '1', '13'
 
 ---
-exec sendMessage '1', '4', 'text', 'Good morning, Ms. Johnson. How are you today?', @result output;
-exec sendMessage '4', '1', 'text', 'Good morning, Mr. Doe. I’m doing well, thank you. How about yourself?', @result output;
-exec sendMessage '1', '4', 'text', 'I’m doing well, thank you. Looking forward to our meeting later.', @result output;
-
 exec sendMessage '1', '5', 'text', 'Tom, did you catch the game last night?', @result output;
 exec sendMessage '5', '1', 'text', 'Hey John, yeah I did! What a finish, right?', @result output;
 exec sendMessage '1', '5', 'text', 'Absolutely, couldn’t believe that last-minute goal!', @result output;

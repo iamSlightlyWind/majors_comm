@@ -11,7 +11,7 @@ begin
     declare @userId int
     SELECT @userId = id
     FROM users
-    WHERE username = @login AND password = @password and isGoogleUser = 0
+    WHERE username = @login AND password = @password
 
     IF @userId IS NOT NULL
     BEGIN
@@ -21,7 +21,7 @@ begin
     BEGIN
         SELECT @userId = id
         FROM users
-        WHERE email = @login AND password = @password and isGoogleUser = 0
+        WHERE email = @login AND password = @password
 
         IF @userId IS NOT NULL
         BEGIN
@@ -69,12 +69,11 @@ create or alter procedure addUser
     @result int output
 as
 begin
-    declare @isGoogleUser int = 0
     begin
         insert into users
-            (username, password, email, dateOfBirth, gender, isGoogleUser)
+            (username, password, email, dateOfBirth, gender)
         values
-            (@username, @password, @email, @dateOfBirth, @gender, @isGoogleUser)
+            (@username, @password, @email, @dateOfBirth, @gender)
         set @result = 1
     end
 end

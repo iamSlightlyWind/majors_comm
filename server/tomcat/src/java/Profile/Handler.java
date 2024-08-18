@@ -17,10 +17,8 @@ public class Handler extends HttpServlet {
         switch (action) {
             case "update":
                 updateProfile(request, response);
-                System.out.println("Profile updated");
             default:
                 viewProfile(request, response);
-                System.out.println("Profile viewed");
                 break;
         }
     }
@@ -36,9 +34,24 @@ public class Handler extends HttpServlet {
     protected void updateProfile(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User current = (User) request.getSession().getAttribute("user");
-        current.fullname = request.getParameter("fullname");
-        current.dob = request.getParameter("dob");
-        current.password = request.getParameter("password");
+        String fullname = request.getParameter("fullName");
+        String dob = request.getParameter("dob");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+
+        if(!fullname.equals("")){
+            current.fullname = fullname;
+        } 
+        
+        if(!dob.equals("")){
+            current.dob = dob;
+        }
+
+        if (password != null && confirmPassword != null && password.equals(confirmPassword)) {
+            current.password = password;
+        } else {
+            request.setAttribute("passwordError", 1);
+        }
 
         current.updateProfile();
     }

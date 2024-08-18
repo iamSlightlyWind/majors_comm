@@ -182,7 +182,6 @@
                       </path>
                     </svg>
                   </button>
-                  <button type="button" class="navloggedin-button3 button"></button>
                 </div>
                 <div class="navloggedin-footer">
                   <button type="button" class="navloggedin-button4 button" onclick="window.location.href='/profile'">

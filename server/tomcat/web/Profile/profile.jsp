@@ -179,7 +179,7 @@
           <div class="profile-container2">
             <navloggedin-wrapper class="navloggedin-wrapper">
               <div class="navloggedin-navloggedin">
-                <div class="navloggedin-logo">
+                <div class="navloggedin-logo" style="margin-left: 1.5vw;">
                   <span>
                     <fragment class="profile-fragment1">
                       <span class="profile-text1">Major's</span>
@@ -195,14 +195,14 @@
                   </span>
                 </div>
                 <div class="navloggedin-menu">
-                  <button type="button" class="navloggedin-button1 button">
+                  <button type="button" class="navloggedin-button1 button" onclick="window.location.href='/chat'">
                     <svg viewBox="0 0 1152 1024" class="navloggedin-icon10">
                       <path
                         d="M1088 901.166c0 45.5 26.028 84.908 64 104.184v15.938c-10.626 1.454-21.472 2.224-32.5 2.224-68.008 0-129.348-28.528-172.722-74.264-26.222 6.982-54.002 10.752-82.778 10.752-159.058 0-288-114.616-288-256s128.942-256 288-256c159.058 0 288 114.616 288 256 0 55.348-19.764 106.592-53.356 148.466-6.824 14.824-10.644 31.312-10.644 48.7zM512 0c278.458 0 504.992 180.614 511.836 405.52-49.182-21.92-103.586-33.52-159.836-33.52-95.56 0-185.816 33.446-254.138 94.178-70.846 62.972-109.862 147.434-109.862 237.822 0 44.672 9.544 87.888 27.736 127.788-5.228 0.126-10.468 0.212-15.736 0.212-27.156 0-53.81-1.734-79.824-5.044-109.978 109.978-241.25 129.7-368.176 132.596v-26.916c68.536-33.578 128-94.74 128-164.636 0-9.754-0.758-19.33-2.164-28.696-115.796-76.264-189.836-192.754-189.836-323.304 0-229.75 229.23-416 512-416z">
                       </path>
                     </svg>
                   </button>
-                  <button type="button" class="navloggedin-button2 button">
+                  <button type="button" class="navloggedin-button2 button" onclick="window.location.href='/relation'">
                     <svg viewBox="0 0 1024 1024" class="navloggedin-icon12">
                       <path
                         d="M682 554q56 0 122 16t122 52 56 82v106h-256v-106q0-88-84-148 14-2 40-2zM342 554q56 0 122 16t121 52 55 82v106h-598v-106q0-46 56-82t122-52 122-16zM342 470q-52 0-90-38t-38-90 38-90 90-38 89 38 37 90-37 90-89 38zM682 470q-52 0-90-38t-38-90 38-90 90-38 90 38 38 90-38 90-90 38z">
@@ -212,7 +212,7 @@
                   <button type="button" class="navloggedin-button3 button"></button>
                 </div>
                 <div class="navloggedin-footer">
-                  <button type="button" class="navloggedin-button4 button">
+                  <button type="button" class="navloggedin-button4 button" onclick="window.location.href='/profile'">
                     <svg viewBox="0 0 1024 1024" class="navloggedin-icon14">
                       <path
                         d="M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z">
@@ -226,7 +226,8 @@
                       </path>
                     </svg>
                   </button>
-                  <button type="button" class="navloggedin-button6 button">
+                  <button type="button" class="navloggedin-button6 button"
+                    onclick="window.location.href='/auth?action=logout'">
                     <svg viewBox="0 0 1024 1024" class="navloggedin-icon18">
                       <path
                         d="M170 214v596h342v86h-342q-34 0-59-26t-25-60v-596q0-34 25-60t59-26h342v86h-342zM726 298l212 214-212 214-60-62 110-110h-434v-84h434l-110-112z">
@@ -240,7 +241,7 @@
               <div class="edit-profile-component-container1 root-class-name">
                 <div class="edit-profile-component-root-form">
                   <div class="edit-profile-component-container2">
-                    <form class="edit-profile-component-can-edit">
+                    <form action="/profile" method="post" class="edit-profile-component-can-edit">
                       <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
                         class="edit-profile-component-image" />
                       <button type="button" class="edit-profile-component-button1 button">
@@ -260,7 +261,7 @@
                       </span>
                       <input type="date" name="dob" value="${user.dob}"
                         class="edit-profile-component-textinput2 input" />
-                      <button type="button" class="edit-profile-component-button2 button">
+                      <button type="submit" name="action" value="update" class="edit-profile-component-button2 button">
                         <svg viewBox="0 0 1024 1024">
                           <path
                             d="M640 384v-170h-426v170h426zM512 810q52 0 90-38t38-90-38-90-90-38-90 38-38 90 38 90 90 38zM726 128l170 170v512q0 34-26 60t-60 26h-596q-36 0-61-25t-25-61v-596q0-36 25-61t61-25h512z">
@@ -269,7 +270,7 @@
                       </button>
                     </form>
                     <div class="edit-profile-component-container3">
-                      <form class="edit-profile-component-form1">
+                      <form class="edit-profile-component-form1" action="/profile" method="post">
                         <span class="edit-profile-component-uset-name">
                           Username
                         </span>
@@ -282,19 +283,33 @@
                         <input type="text" disabled="true" value="${user.email}"
                           class="edit-profile-component-textinput4 input" />
                       </form>
-                      <form class="edit-profile-component-form2">
+                      <form class="edit-profile-component-form2" action="/profile" method="post">
                         <span class="edit-profile-component-password">
                           <span>Password</span>
                           <br />
                         </span>
-                        <input type="password" required="true" placeholder="Password" name="password"
-                          class="edit-profile-component-textinput5 input" />
-                        <span class="edit-profile-component-cf-password">
-                          Confirm Password
-                        </span>
-                        <input type="password" placeholder="Password" name="confirmPassword"
-                          class="edit-profile-component-textinput6 input" />
-                        <button type="button" class="edit-profile-component-button3 button">
+                        <c:choose>
+                          <c:when test="${passwordError == 1}">
+                            <input type="password" required="true" placeholder="Passwords do not match" name="password"
+                              class="edit-profile-component-textinput5 input" />
+                            <span class="edit-profile-component-cf-password">
+                              Confirm Password
+                            </span>
+                            <input type="password" placeholder="Passwords do not match" name="confirmPassword"
+                              class="edit-profile-component-textinput6 input" />
+                          </c:when>
+                          <c:otherwise>
+                            <input type="password" required="true" placeholder="Password" name="password"
+                              class="edit-profile-component-textinput5 input" />
+                            <span class="edit-profile-component-cf-password">
+                              Confirm Password
+                            </span>
+                            <input type="password" placeholder="Confirm Password" name="confirmPassword"
+                              class="edit-profile-component-textinput6 input" />
+                          </c:otherwise>
+                        </c:choose>
+                        <button type="submit" name="action" value="update"
+                          class="edit-profile-component-button3 button">
                           <svg viewBox="0 0 1024 1024">
                             <path
                               d="M640 384v-170h-426v170h426zM512 810q52 0 90-38t38-90-38-90-90-38-90 38-38 90 38 90 90 38zM726 128l170 170v512q0 34-26 60t-60 26h-596q-36 0-61-25t-25-61v-596q0-36 25-61t61-25h512z">

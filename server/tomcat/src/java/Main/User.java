@@ -26,6 +26,10 @@ public class User {
         this.password = password;
     }
 
+    public void updateProfile() {
+        Database.updateProfile(this);
+    }
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;

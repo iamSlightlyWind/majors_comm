@@ -172,14 +172,12 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="./style.css" />
+      <link rel="stylesheet" href="/Profile/profile.css" />
       <div>
-        <link href="./profile.css" rel="stylesheet" />
-
+        <link href="/Style/profile.css" rel="stylesheet" />
         <div class="profile-container1">
           <div class="profile-container2">
             <navloggedin-wrapper class="navloggedin-wrapper">
-              <!--Navloggedin component-->
               <div class="navloggedin-navloggedin">
                 <div class="navloggedin-logo">
                   <span>
@@ -239,7 +237,6 @@
               </div>
             </navloggedin-wrapper>
             <edit-profile-component-wrapper class="edit-profile-component-wrapper">
-              <!--EditProfileComponent component-->
               <div class="edit-profile-component-container1 root-class-name">
                 <div class="edit-profile-component-root-form">
                   <div class="edit-profile-component-container2">
@@ -256,11 +253,13 @@
                       <span class="edit-profile-component-full-name">
                         Full Name
                       </span>
-                      <input type="text" placeholder="Full Name" class="edit-profile-component-textinput1 input" />
+                      <input type="text" placeholder="Full Name" name="fullName" value="${user.fullName}"
+                        class="edit-profile-component-textinput1 input" />
                       <span class="edit-profile-component-date-of-birth">
                         Date of Birth
                       </span>
-                      <input type="date" placeholder="Date Of Birth" class="edit-profile-component-textinput2 input" />
+                      <input type="date" name="dob" value="${user.dob}"
+                        class="edit-profile-component-textinput2 input" />
                       <button type="button" class="edit-profile-component-button2 button">
                         <svg viewBox="0 0 1024 1024">
                           <path
@@ -274,13 +273,13 @@
                         <span class="edit-profile-component-uset-name">
                           Username
                         </span>
-                        <input type="text" disabled="true" placeholder="Username"
-                          class="edit-profile-component-textinput3 input" />
+                        <input type="text" disabled="true" value="${user.username}""
+                          class=" edit-profile-component-textinput3 input" />
                         <span class="edit-profile-component-email">
                           <span>Email</span>
                           <br />
                         </span>
-                        <input type="text" disabled="true" placeholder="Email"
+                        <input type="text" disabled="true" value="${user.email}"
                           class="edit-profile-component-textinput4 input" />
                       </form>
                       <form class="edit-profile-component-form2">
@@ -288,12 +287,13 @@
                           <span>Password</span>
                           <br />
                         </span>
-                        <input type="password" required="true" placeholder="Password"
+                        <input type="password" required="true" placeholder="Password" name="password"
                           class="edit-profile-component-textinput5 input" />
                         <span class="edit-profile-component-cf-password">
                           Confirm Password
                         </span>
-                        <input type="password" placeholder="Password" class="edit-profile-component-textinput6 input" />
+                        <input type="password" placeholder="Password" name="confirmPassword"
+                          class="edit-profile-component-textinput6 input" />
                         <button type="button" class="edit-profile-component-button3 button">
                           <svg viewBox="0 0 1024 1024">
                             <path

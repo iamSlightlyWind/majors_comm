@@ -4,6 +4,10 @@
         <servlet-name>chat</servlet-name>
         <servlet-class>Conversation.Handler</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>profile</servlet-name>
+        <servlet-class>Profile.Handler</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Relation</servlet-name>
         <url-pattern>/relation</url-pattern>
@@ -11,6 +15,10 @@
     <servlet-mapping>
         <servlet-name>chat</servlet-name>
         <url-pattern>/chat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>auth</welcome-file>

@@ -454,3 +454,18 @@ begin
     where senderId = @sender and receiverId = @receiver and time = @time
 end
 go
+
+create or alter procedure updateProfile
+    @id int,
+    @fullname nvarchar(50) = null,
+    @password nvarchar(32) = null,
+    @dateOfBirth date = null
+as
+begin
+    update users
+    set fullname = ISNULL(@fullname, fullname),
+        password = ISNULL(@password, password),
+        dateOfBirth = ISNULL(@dateOfBirth, dateOfBirth)
+    where id = @id
+end
+go

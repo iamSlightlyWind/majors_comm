@@ -355,4 +355,19 @@ public class Database {
         }
         return false;
     }
+
+    public static boolean updateProfile(User current) {
+        try {
+            var statement = connection.prepareCall("{call updateProfile(?, ?, ?, ?)}");
+            statement.setInt(1, current.id);
+            statement.setString(2, current.fullname);
+            statement.setString(3, current.password);
+            statement.setString(4, current.dob);
+            statement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

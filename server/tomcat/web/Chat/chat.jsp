@@ -239,7 +239,8 @@
                               <div class="chat-list-item-user-chat-box">
                                 <span>
                                   <fragment class="chat-fragment4">
-                                    <span class="chat-text18" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 20vw;">
+                                    <span class="chat-text18"
+                                      style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 20vw;">
                                       ${preview.message}
                                     </span>
                                   </fragment>

@@ -218,7 +218,7 @@
                       <br />
                     </span>
                   </div>
-                  <div class="chat-container4">
+                  <div class="chat-container4" style="overflow-x: hidden;">
                     <c:forEach var="preview" items="${previews}">
                       <chat-list-item-wrapper class="chat-list-item-chat-list-item-wrapper"
                         onclick="window.location.href='/chat?uid=${preview.theirID}'">
@@ -239,7 +239,7 @@
                               <div class="chat-list-item-user-chat-box">
                                 <span>
                                   <fragment class="chat-fragment4">
-                                    <span class="chat-text18">
+                                    <span class="chat-text18" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 20vw;">
                                       ${preview.message}
                                     </span>
                                   </fragment>

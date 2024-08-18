@@ -172,9 +172,9 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="/Profile/profile.css" />
+      <link rel="stylesheet" href="/Style/style.css" />
       <div>
-        <link href="/Style/profile.css" rel="stylesheet" />
+        <link href="/Profile/profile.css" rel="stylesheet" />
         <div class="profile-container1">
           <div class="profile-container2">
             <navloggedin-wrapper class="navloggedin-wrapper">

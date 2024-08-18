@@ -49,6 +49,22 @@ public class User {
         return login.contains("@");
     }
 
+    public String getFullName() {
+        return this.fullname;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getDob() {
+        return this.dob;
+    }
+
     public int login() {
         if (this.email != null) {
             return Database.login(this.email, this.password);

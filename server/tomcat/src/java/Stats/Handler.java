@@ -43,7 +43,7 @@ public class Handler extends HttpServlet {
     protected void scan(HttpServletRequest request) {
         String dateFrom = request.getParameter("dateFrom");
         String dateTo = request.getParameter("dateTo");
-    
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date fromDate = null;
         Date toDate = null;
@@ -58,51 +58,46 @@ public class Handler extends HttpServlet {
             e.printStackTrace();
             return;
         }
-    
+
         String applicationPath = request.getServletContext().getRealPath("") + "upload";
         System.out.println(applicationPath);
         File files = new File(applicationPath + "/file");
         File images = new File(applicationPath + "/image");
         File profilePics = new File(applicationPath + "/profile");
-    
+
         this.files = 0;
         this.images = 0;
         this.size = 0;
-    
-        File[] fileList = files.listFiles();
-        File[] imageList = images.listFiles();
-        File[] profilePicList = profilePics.listFiles();
-    
-        if (fileList != null) {
-            for (File file : fileList) {
-                if (isWithinDateRange(file, fromDate, toDate)) {
-                    this.files++;
-                    this.size += file.length();
-                }
-            }
-        }
-    
-        if (imageList != null) {
-            for (File image : imageList) {
-                if (isWithinDateRange(image, fromDate, toDate)) {
-                    this.images++;
-                    this.size += image.length();
-                }
-            }
-        }
-    
-        if (profilePicList != null) {
-            for (File profilePic : profilePicList) {
-                if (isWithinDateRange(profilePic, fromDate, toDate)) {
-                    this.images++;
-                    this.size += profilePic.length();
-                }
-            }
-        }
-    
+
+        scanDirectory(files, fromDate, toDate, "file");
+        scanDirectory(images, fromDate, toDate, "image");
+        scanDirectory(profilePics, fromDate, toDate, "profile");
+
         this.size = Math.round((this.size / 1048576.0) * 100.0) / 100.0;
     }
-    
+
+    private void scanDirectory(File dir, Date fromDate, Date toDate, String type) {
+        if (dir != null && dir.exists()) {
+            File[] files = dir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        scanDirectory(file, fromDate, toDate, type);
+                    } else if (isWithinDateRange(file, fromDate, toDate)) {
+                        this.size += file.length();
+                        System.out.println("Added " + type + " size: " + file.length() + " bytes, Total size: "
+                                + this.size + " bytes");
+                        if (type.equals("file")) {
+                            this.files++;
+                        } else if (type.equals("image") || type.equals("profile")) {
+                            this.images++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private boolean isWithinDateRange(File file, Date fromDate, Date toDate) {
         long lastModified = file.lastModified();
         if (fromDate != null && lastModified < fromDate.getTime()) {

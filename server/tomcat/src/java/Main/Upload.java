@@ -19,6 +19,9 @@ public class Upload extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (!Relation.Handler.checkPermission(request, response))
+            return;
+
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 
         switch (action) {
@@ -62,6 +65,13 @@ public class Upload extends HttpServlet {
 
     protected void uploadFile(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        int theirID = Integer.parseInt(request.getParameter("uid"));
+        if (Database.getRelation(user.id, theirID) != 1) {
+            response.sendRedirect("/chat?ce=1&uid=" + theirID);
+            return;
+        }
+
         String applicationPath = request.getServletContext().getRealPath("");
         String dateFolder = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String uploadDirPath = applicationPath + File.separator + "upload/file" + File.separator + dateFolder;
@@ -78,8 +88,6 @@ public class Upload extends HttpServlet {
             Files.copy(fileContent, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
         }
 
-        User user = (User) request.getSession().getAttribute("user");
-        int theirID = Integer.parseInt(request.getParameter("uid"));
         Database.sendFileMessage(user.id, theirID, dateFolder + "/" + fileName);
         response.sendRedirect("/chat?uid=" + theirID);
     }
@@ -88,6 +96,11 @@ public class Upload extends HttpServlet {
             throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         int theirID = Integer.parseInt(request.getParameter("uid"));
+        if (Database.getRelation(user.id, theirID) != 1) {
+            response.sendRedirect("/chat?ce=1&uid=" + theirID);
+            return;
+        }
+
         String applicationPath = request.getServletContext().getRealPath("");
 
         String dateFolder = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());

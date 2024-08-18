@@ -12,8 +12,21 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class Handler extends HttpServlet {
 
+    public static boolean checkPermission(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User current = (User) request.getSession().getAttribute("user");
+        if (current == null) {
+            response.sendRedirect("/Auth/Login.jsp");
+            return false;
+        }
+        return true;
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (!Relation.Handler.checkPermission(request, response))
+            return;
+
         String action = request.getParameter("action");
         if (action == null) {
             action = "";

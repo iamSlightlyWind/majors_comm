@@ -13,6 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Handler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (!Relation.Handler.checkPermission(request, response))
+            return;
+
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
         String id = request.getParameter("uid") == null ? "" : request.getParameter("uid");
 

@@ -283,7 +283,7 @@
                     <form class="search-requested-form">
                       <div class="search-container19">
                         <img src="/upload/profile/${request.id}.png" alt="image" class="search-image2" />
-                        <span class="search-text21">${request.fullName}</span>
+                        <span class="search-text21" style="width: 8vw;">${request.fullName}</span>
                         <input type="hidden" name="theirID" value="${request.id}" />
                         <div class="search-container20">
                           <c:if test="${request.relation == 2}">
@@ -320,7 +320,7 @@
                     <form class="search-found-form2">
                       <div class="search-container25">
                         <img src="/upload/profile/${blocked.id}.png" alt="image" class="search-image4" />
-                        <span class="search-text26">${blocked.fullName}</span>
+                        <span class="search-text26" style="width: 8vw;">${blocked.fullName}</span>
                         <input type="hidden" name="theirID" value="${blocked.id}" />
                         <div class="search-container26">
                           <button type="submit" name="action" value="unblock" class="search-button5 button">
@@ -348,7 +348,7 @@
                       <input type="hidden" name="theirID" value="${user.id}" />
                       <div class="search-container29">
                         <img src="/upload/profile/${user.id}.png" alt="image" class="search-image5" />
-                        <span class="search-text30">${user.fullName}</span>
+                        <span class="search-text30" style="width: 8vw;">${user.fullName}</span>
                         <div class="search-container30">
                           <button type="submit" name="action" value="add" class="search-button6 button">
                             Request

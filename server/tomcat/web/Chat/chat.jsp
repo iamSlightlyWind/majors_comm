@@ -145,10 +145,9 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="./style.css" />
+      <link rel="stylesheet" href="/Style/style.css" />
       <div>
-        <link href="./chat.css" rel="stylesheet" />
-
+        <link href="/Chat/chat.css" rel="stylesheet" />
         <div class="chat-container1">
           <div class="chat-container2">
             <navloggedin-wrapper class="navloggedin-navloggedin-wrapper">
@@ -220,34 +219,37 @@
                     </span>
                   </div>
                   <div class="chat-container4">
-                    <chat-list-item-wrapper class="chat-list-item-chat-list-item-wrapper">
-                      <div class="chat-list-item-chat-list-item">
-                        <form class="chat-list-item-form">
-                          <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                            class="chat-list-item-image" />
-                          <div class="chat-list-item-container">
-                            <div class="chat-list-item-username-box">
-                              <span>
-                                <fragment class="chat-fragment3">
-                                  <span class="chat-text17">
-                                    Pham Thanh Phong
-                                  </span>
-                                </fragment>
-                              </span>
+                    <c:forEach var="preview" items="${previews}">
+                      <chat-list-item-wrapper class="chat-list-item-chat-list-item-wrapper"
+                        onclick="window.location.href='/chat?uid=${preview.theirID}'">
+                        <div class="chat-list-item-chat-list-item">
+                          <form class="chat-list-item-form">
+                            <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                              class="chat-list-item-image" />
+                            <div class="chat-list-item-container">
+                              <div class="chat-list-item-username-box">
+                                <span>
+                                  <fragment class="chat-fragment3">
+                                    <span class="chat-text17">
+                                      ${preview.theirName}
+                                    </span>
+                                  </fragment>
+                                </span>
+                              </div>
+                              <div class="chat-list-item-user-chat-box">
+                                <span>
+                                  <fragment class="chat-fragment4">
+                                    <span class="chat-text18">
+                                      ${preview.message}
+                                    </span>
+                                  </fragment>
+                                </span>
+                              </div>
                             </div>
-                            <div class="chat-list-item-user-chat-box">
-                              <span>
-                                <fragment class="chat-fragment4">
-                                  <span class="chat-text18">
-                                    You: What the fuck took you so long bro
-                                  </span>
-                                </fragment>
-                              </span>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </chat-list-item-wrapper>
+                          </form>
+                        </div>
+                      </chat-list-item-wrapper>
+                    </c:forEach>
                   </div>
                 </div>
               </div>
@@ -256,7 +258,7 @@
                   <div class="chat-username-box">
                     <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg" class="chat-image1" />
                     <span class="chat-username">
-                      <span>Pham Thanh Phong</span>
+                      <span>${theirName}</span>
                       <br />
                     </span>
                   </div>

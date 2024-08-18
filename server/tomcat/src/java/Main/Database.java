@@ -1,5 +1,7 @@
 package Main;
 
+import Conversation.Message;
+import Conversation.Preview;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -321,17 +323,19 @@ public class Database {
         return null;
     }
 
-    public static ArrayList<Message> getLastMessages(int userID) {
+    public static ArrayList<Preview> getPreview(int userID) {
         try {
-            var statement = connection.prepareCall("{call getLastMessages(?)}");
+            var statement = connection.prepareCall("{call getPreview(?)}");
             statement.setInt(1, userID);
             var result = statement.executeQuery();
-            ArrayList<Message> messages = new ArrayList<>();
+            ArrayList<Preview> previews = new ArrayList<Preview>();
             while (result.next()) {
-                messages.add(new Message(result.getInt(1) == userID, result.getInt(2), result.getString(3),
-                        result.getString(4)));
+                previews.add(new Preview(result.getInt(1) == userID ? result.getInt(2) : result.getInt(1),
+                        getUser(result.getInt(1) == userID ? result.getInt(2) : result.getInt(1)).fullname,
+                        new Message(result.getInt(1) == userID, result.getInt(2), result.getString(3),
+                                result.getString(4))));
             }
-            return messages;
+            return previews;
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -155,7 +155,7 @@ begin
 end
 go
 
-create procedure removeFriend
+create or alter procedure removeFriend
     @user1 int,
     @user2 int
 as
@@ -406,15 +406,7 @@ begin
 end
 go
 
-/* create table messages (
-    senderId int not null,
-    receiverId int not null,
-    type varchar(10) not null,
-    content nvarchar(max) not null,
-    time datetime not null
-) */
-
-CREATE OR ALTER PROCEDURE getLastMessages
+CREATE OR ALTER PROCEDURE getPreview
     @requesterID INT
 AS
 BEGIN

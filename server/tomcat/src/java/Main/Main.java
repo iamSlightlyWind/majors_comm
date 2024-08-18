@@ -2,13 +2,18 @@ package Main;
 
 import java.util.ArrayList;
 
+import Conversation.Format;
+import Conversation.Message;
+
 public class Main {
     public static void main(String[] args) {
         User current = Database.getUser(1);
+        User them = Database.getUser(2);
 
-        ArrayList<Message> firstMessages = Database.getLastMessages(current.id);
-        for (Message message : firstMessages) {
-            System.out.println(message);
+        ArrayList<Message> messages = Format.formatMessages(Database.getMessages(current.id, them.id));
+
+        for (Message message : messages) {
+            System.out.println(message.isMine + " " + message.location + " " + message.content);
         }
     }
 }

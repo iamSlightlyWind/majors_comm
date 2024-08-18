@@ -1,10 +1,11 @@
-package Main;
+package Conversation;
 
 public class Message {
     public boolean isMine;
     public int theirID;
     public String type;
     public String content;
+    public String location;
 
     public Message(boolean isMine, int theirID, String type, String content) {
         this.isMine = isMine;
@@ -16,12 +17,16 @@ public class Message {
         return content;
     }
 
+    public String getId() {
+        return theirID + "";
+    }
+
     public String getType() {
         return type;
     }
 
-    public boolean isMine() {
-        return isMine;
+    public String getIsMine() {
+        return isMine + "";
     }
 
     public String toString() {
